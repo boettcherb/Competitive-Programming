@@ -1,0 +1,42 @@
+#include <iostream>
+
+const int N = 110;
+
+int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+
+    int tc;
+    std::cin >> tc;
+    while (tc--) {
+        int n, m, arr[N];
+        bool swaps[N] = { false };
+        std::cin >> n >> m;
+        for (int i = 1; i <= n; ++i) {
+            std::cin >> arr[i];
+        }
+        for (int i = 0; i < m; ++i) {
+            int p;
+            std::cin >> p;
+            swaps[p] = true;
+        }
+        bool possible = true;
+        int largest = 0;
+        for (int i = 1; i < n; ++i) {
+            largest = arr[i] > largest ? arr[i] : largest;
+            if (!swaps[i]) {
+                for (int j = i + 1; j <= n; ++j) {
+                    if (arr[j] < largest) {
+                        possible = false;
+                    }
+                }
+            }
+            if (!possible) {
+                break;
+            }
+        }
+        std::cout << (possible ? "YES" : "NO") << '\n';
+    }
+    return 0;
+}
