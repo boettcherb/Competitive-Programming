@@ -58,9 +58,7 @@ struct Point {
     Point(int p, int i, bool l) : p{p}, index{i}, left{l} {}
     bool operator<(const Point& other) const {
         if (p == other.p) {
-            if (left && other.left)
-                return ranges[index].r > ranges[other.index].r;
-            else if (!left && !other.left)
+            if (!left && !other.left)
                 return ranges[index].l > ranges[other.index].l;
             return !left;
         }
