@@ -1,52 +1,40 @@
 #include <iostream>
-#include <set>
+#include <algorithm>
 
 const int N = 2e5 + 10;
 
 struct Range {
     int index, l, r;
-    Range(int i, int l, int r) : index{i}, l{l}, r{r} {}
-};
-
-struct compareStart {
-    bool operator()(const Range& r1, const Range& r2) {
-        return r1.l == r2.l ? r1.r > r2.r : r1.l < r2.l;
+    bool operator<(const Range& other) const {
+        return l == other.l ? r > other.r : l < other.l;
     }
-};
-
-struct compareEnd {
-    bool operator()(const Range& r1, const Range& r2) {
-        return r1.r == r2.r ? r1.l > r2.l : r1.r < r2.r;
-    }
-};
+} ranges[N];
 
 int main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
 
-    int n, a, b;
+    int n;
     std::cin >> n;
-    std::set<Range, compareStart> start;
-    std::set<Range, compareEnd> end, end2;
     for (int i = 0; i < n; ++i) {
-        std::cin >> a >> b;
-        start.emplace(i, a, b);
-        end.emplace(i, a, b);
-        end2.emplace(i, a, b);
+        std::cin >> ranges[i].l >> ranges[i].r;
+        ranges[i].index = i;
     }
-    bool contains[N] = { false }, containedBy[N] = { false };
-    for (const Range& r : start) {
-        auto itr = end.lower_bound(r);
-        contains[r.index] = itr != end.begin();
-        end.erase(r);
-        itr = end2.lower_bound(r);
-        auto itr2 = end2.begin();
-        while (itr2 != itr) {
-            containedBy[(*itr2).index] = true;
-            itr2 = end2.erase(itr2);
+    std::sort(ranges, ranges + n);
+    int contains[N] = { 0 }, containedBy[N] = { 0 };
+    int max = 0, min = 2e9;
+    for (int i = 0; i < n; ++i) {
+        if (max >= ranges[i].r) {
+            containedBy[ranges[i].index] = 1;
         }
-        end2.erase(r);
+        max = std::max(max, ranges[i].r);
+    }
+    for (int i = n - 1; i >= 0; --i) {
+        if (min <= ranges[i].r) {
+            contains[ranges[i].index] = 1;
+        }
+        min = std::min(min, ranges[i].r);
     }
     for (int i = 0; i < n; ++i) {
         std::cout << contains[i] << ' ';
