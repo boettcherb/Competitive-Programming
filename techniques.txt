@@ -14,6 +14,13 @@ USACO:
         Difficulty: Easy
         Key Idea: Try every possible K and generate every K-length substring.
           Use a set to detect whether any substring occurs more than once.
+      Bronze 3: Livestock Lineup
+        Techniques: Brute Force (Permutation Enumeration)
+        Complexity: O(8! * N * 8)
+        Difficulty: Easy
+        Key Idea: Enumerate all cow orderings in lexicographical order and
+          output the first ordering satisfying all adjacency constraints.
+
 
 Techniques:
   Preprocessing:
@@ -30,3 +37,8 @@ Techniques:
       USACO 2019-Dec-B2: Where Am I?:
         Try each possible K from 1 to N and test whether all K-length
         substrings are unique
+    Permutation Enumeration:
+      USACO 2019-Dec-B3: Livestock Lineup:
+        Start with the cows in alphabetical order and use next_permutation
+        to enumerate through all 8! possible lineups. The first satisfying
+        all adjacency constraints is lexicographically smallest.
