@@ -8,6 +8,12 @@ USACO:
         Key Idea: Store each cow's position in each session so that pairwise
           ranking comparisons become O(1). Avoid repeatedly scanning rankings
           to find cow positions.
+      Bronze 2: Where Am I?:
+        Techniques: Brute Force (Candidate Enumeration)
+        Complexity: O(N^2)
+        Difficulty: Easy
+        Key Idea: Try every possible K and generate every K-length substring.
+          Use a set to detect whether any substring occurs more than once.
 
 Techniques:
   Preprocessing:
@@ -18,5 +24,9 @@ Techniques:
   Brute Force:
     Pair Enumeration:
       USACO 2019-Dec-B1: Cow Gymnastics:
-        O(k*n^2) implementation: loop through all pairs of n cows and
-        compare their rankings for all k sessions.
+        Loop through all pairs of n cows and compare their rankings
+        for all k sessions.
+    Candidate Enumeration:
+      USACO 2019-Dec-B2: Where Am I?:
+        Try each possible K from 1 to N and test whether all K-length
+        substrings are unique
