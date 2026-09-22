@@ -1,0 +1,22 @@
+USACO:
+  2019-2020:
+    2019 December:
+      Bronze 1: Cow Gymnastics:
+        Techniques: Brute Force (Pair Enumeration), Preprocessing (Inverse Mapping)
+        Complexity: O(KN^2)
+        Difficulty: Easy
+        Key Idea: Store each cow's position in each session so that pairwise
+          ranking comparisons become O(1). Avoid repeatedly scanning rankings
+          to find cow positions.
+
+Techniques:
+  Preprocessing:
+    Inverse Mapping:
+      USACO 2019-Dec-B1: Cow Gymnastics:
+        Convert the input from "list of cows in ranked order per session"
+        to "ranking given cow and session" so comparisons are O(1).
+  Brute Force:
+    Pair Enumeration:
+      USACO 2019-Dec-B1: Cow Gymnastics:
+        O(k*n^2) implementation: loop through all pairs of n cows and
+        compare their rankings for all k sessions.
