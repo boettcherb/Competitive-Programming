@@ -1,14 +1,14 @@
 USACO:
   2019-2020:
     2019 December:
-      Bronze 1: Cow Gymnastics:
+      Bronze 1: Cow Gymnastics
         Techniques: Brute Force (Pair Enumeration), Preprocessing (Inverse Mapping)
         Complexity: O(KN^2)
         Difficulty: Easy
         Key Idea: Store each cow's position in each session so that pairwise
           ranking comparisons become O(1). Avoid repeatedly scanning rankings
           to find cow positions.
-      Bronze 2: Where Am I?:
+      Bronze 2: Where Am I?
         Techniques: Brute Force (Candidate Enumeration)
         Complexity: O(N^2)
         Difficulty: Easy
@@ -22,11 +22,20 @@ USACO:
           output the first ordering satisfying all adjacency constraints.
       Silver 1: MooBuzz
         Techniques: Binary Search (First True)
-        Complexity: O(log N)
+        Complexity: O(logN)
         Difficulty: Easy
         Key Idea: For any value x, let count(x) be how many numbers <= x are
           not divisible by 3 or 5. Use binary search to find the first value
           x such that count(x) >= n
+      Silver 2: Meetings
+        Techniques: Sorting, Two Pointers (Sliding Window)
+        Complexity: O(NlogN)
+        Difficulty: Hard
+        Key Idea: Treat collisions as cows passing through each other. Separate
+          the cows into left-moving and right-moving, and use sorting and exit
+          exit events to find T. Then, use a two-pointer method to count
+          collisions by finding pairs of cows such that they are moving towards
+          each other and their initial distance is <= 2T.
 
 
 Techniques:
@@ -54,3 +63,9 @@ Techniques:
       USACO 2019-Dec-S1: MooBuzz:
         Let count(x) be how many numbers <= x are not divisible by 3 or 5.
         Find the smallest x such that count(x) >= n.
+  Two Pointers:
+    Sliding Window:
+      USACO 2019-Dec-S2: Meetings:
+        After finding T, for each right-moving cow cR at position p, find left-
+        moving cows with positions in the range (p, p + 2T]. Sliding window
+        works because the left- and right-moving cow lists are sorted by position.
