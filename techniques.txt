@@ -20,6 +20,13 @@ USACO:
         Difficulty: Easy
         Key Idea: Enumerate all cow orderings in lexicographical order and
           output the first ordering satisfying all adjacency constraints.
+      Silver 1: MooBuzz
+        Techniques: Binary Search (First True)
+        Complexity: O(log N)
+        Difficulty: Easy
+        Key Idea: For any value x, let count(x) be how many numbers <= x are
+          not divisible by 3 or 5. Use binary search to find the first value
+          x such that count(x) >= n
 
 
 Techniques:
@@ -42,3 +49,8 @@ Techniques:
         Start with the cows in alphabetical order and use next_permutation
         to enumerate through all 8! possible lineups. The first satisfying
         all adjacency constraints is lexicographically smallest.
+  Binary Search:
+    First True:
+      USACO 2019-Dec-S1: MooBuzz:
+        Let count(x) be how many numbers <= x are not divisible by 3 or 5.
+        Find the smallest x such that count(x) >= n.
