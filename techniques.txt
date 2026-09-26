@@ -43,6 +43,13 @@ USACO:
         Key Idea: Use flood fill to create connected components with the same
           milk type. For each query, if the endpoints are in different
           components, the farmer will always be happy.
+    2020 January:
+      Bronze 1: Word Processor
+        Techniques: Greedy
+        Complexity: O(N)
+        Difficulty: Trivial
+        Key Idea: Process words from left to right. At each word, put it on
+          the current line if it fits. Otherwise, start a new line.
 
 
 Techniques:
@@ -65,6 +72,10 @@ Techniques:
         Start with the cows in alphabetical order and use next_permutation
         to enumerate through all 8! possible lineups. The first satisfying
         all adjacency constraints is lexicographically smallest.
+  Greedy:
+    USACO 2020-Jan-B1: Word Processor:
+      For each word, place it on the current line if it fits. Otherwise,
+      start a new line and place it there.
   Binary Search:
     First True:
       USACO 2019-Dec-S1: MooBuzz:
