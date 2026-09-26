@@ -36,6 +36,13 @@ USACO:
           exit events to find T. Then, use a two-pointer method to count
           collisions by finding pairs of cows such that they are moving towards
           each other and their initial distance is <= 2T.
+      Silver 3: Milk Visits
+        Techniques: Graphs (Connected Components / Flood Fill)
+        Complexity: O(N + M)
+        Difficulty: Medium
+        Key Idea: Use flood fill to create connected components with the same
+          milk type. For each query, if the endpoints are in different
+          components, the farmer will always be happy.
 
 
 Techniques:
@@ -69,3 +76,8 @@ Techniques:
         After finding T, for each right-moving cow cR at position p, find left-
         moving cows with positions in the range (p, p + 2T]. Sliding window
         works because the left- and right-moving cow lists are sorted by position.
+  Graphs:
+    Connected Components / Flood Fill:
+      USACO 2019-Dec-S3: Milk Visits:
+        Use flood fill/dfs to find connected components with the same milk type.
+        Queries can then be answered in O(1).
