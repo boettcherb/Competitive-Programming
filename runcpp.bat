@@ -12,7 +12,7 @@ set INPUTFILE=%~dp0in.txt
 
 :: Compile the C++ file
 echo Compiling...
-g++ -g -Wall -Wextra -std=c++17 -DDB_LOCAL %CPPFILE% -o %EXEFILE%
+g++ -g -Wall -Wextra -Wconversion -Wshadow -Wpedantic -std=c++17 -DDB_LOCAL %CPPFILE% -o %EXEFILE%
 
 :: Check that the compilation was successful
 if %ERRORLEVEL% NEQ 0 (
