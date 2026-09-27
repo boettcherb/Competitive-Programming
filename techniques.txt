@@ -50,6 +50,13 @@ USACO:
         Difficulty: Trivial
         Key Idea: Process words from left to right. At each word, put it on
           the current line if it fits. Otherwise, start a new line.
+      Bronze 2: Photoshoot
+        Techniques: Brute Force (Candidate Enumeration)
+        Complexity: O(N^2)
+        Difficulty: Easy
+        Key Idea: Try all possible values of a[0] from smallest to largest.
+          Once a[0] is chosen, all other values are forced by a[i + 1] =
+          b[i] - a[i]. The first valid permutation is lexicographically smallest.
 
 
 Techniques:
@@ -67,6 +74,10 @@ Techniques:
       USACO 2019-Dec-B2: Where Am I?:
         Try each possible K from 1 to N and test whether all K-length
         substrings are unique
+      USACO 2020-Jan-B2: Photoshoot
+        Try  each possible first value a[0] in increasing order. For each
+        candidate, reconstruct the permutation using a[i+1] = b[i] - a[i],
+        and check whether all values are unique and valid.
     Permutation Enumeration:
       USACO 2019-Dec-B3: Livestock Lineup:
         Start with the cows in alphabetical order and use next_permutation
