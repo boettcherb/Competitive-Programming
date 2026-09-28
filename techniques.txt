@@ -2,7 +2,8 @@ USACO:
   2019-2020:
     2019 December:
       Bronze 1: Cow Gymnastics
-        Techniques: Brute Force (Pair Enumeration), Preprocessing (Inverse Mapping)
+        Techniques: Brute Force (Combination Enumeration),
+          Preprocessing (Inverse Mapping)
         Complexity: O(KN^2)
         Difficulty: Easy
         Key Idea: Store each cow's position in each session so that pairwise
@@ -37,7 +38,7 @@ USACO:
           collisions by finding pairs of cows such that they are moving towards
           each other and their initial distance is <= 2T.
       Silver 3: Milk Visits
-        Techniques: Graphs (Connected Components / Flood Fill)
+        Techniques: Graphs (Flood Fill)
         Complexity: O(N + M)
         Difficulty: Medium
         Key Idea: Use flood fill to create connected components with the same
@@ -86,6 +87,13 @@ USACO:
         Key Idea: Binary search to find w, the maximum minimal wormhole width.
           For each w, use a DSU data structure to see if every cow can reach
           their sorted position using only edges with weight >= w.
+    2020 February:
+      Bronze 1: Triangles
+        Techniques: Brute Force (Combination Enumeration)
+        Complexity: O(N^3)
+        Difficulty: Easy
+        Key Idea: with N <= 100, we can brute force all N^3 combinations of
+          3 points to find the triangle with the max area.
 
 
 Techniques:
@@ -95,10 +103,12 @@ Techniques:
         Convert the input from "list of cows in ranked order per session"
         to "ranking given cow and session" so comparisons are O(1).
   Brute Force:
-    Pair Enumeration:
+    Combination Enumeration:
       USACO 2019-Dec-B1: Cow Gymnastics:
-        Loop through all pairs of n cows and compare their rankings
-        for all k sessions.
+        Enumerate all pairs of n cows and compare their rankings for all
+        k sessions.
+      USACO 2020-Feb-B1: Triangles
+        Enumerate all triplets of points to find the max-area triangle.
     Candidate Enumeration:
       USACO 2019-Dec-B2: Where Am I?:
         Try each possible K from 1 to N and test whether all K-length
