@@ -69,9 +69,16 @@ USACO:
         Techniques: Brute Force (Candidate Enumeration), Greedy
         Complexity: O(N^2 * logN)
         Difficulty: Medium
-        Key Idea: Try every basket size b as the minimum size of one of Else's
-        baskets. Greedily make as many full baskets of size b as possible. If
-        < k baskets are filled, use the largest remainders for Bessie's baskets.
+        Key Idea: Try every basket size b as the min size of Elsie's baskets.
+          Greedily make as many full baskets of size b as possible. If < k
+          baskets are filled, use the largest remainders for Bessie's baskets.
+      Silver 2: Loan Repayment
+        Techniques: Binary Search (Last True), Math
+        Complexity: O(logN * sqrt(N))
+        Difficulty: Medium
+        Key Idea: Binary search to find X. In the check(x) function, use math
+          to batch together all days with the same y value instead of
+          simulating days one at a time.
 
 
 Techniques:
@@ -118,6 +125,9 @@ Techniques:
       USACO 2020-Jan-B3: Race:
         Binary search for the maximum top speed s. For each s, determine if
         Bessie can reach s in a valid race, and the race time in seconds.
+      USACO 2020-Jan-S2: Loan Repayment:
+        Binary search for the largest value X such that the loan can still be
+        repaid within K days.
   Two Pointers:
     Sliding Window:
       USACO 2019-Dec-S2: Meetings:
@@ -129,3 +139,8 @@ Techniques:
       USACO 2019-Dec-S3: Milk Visits:
         Use flood fill/dfs to find connected components with the same milk type.
         Queries can then be answered in O(1).
+  Math:
+    USACO 2020-Jan-S2: Loan Repayment:
+      Quotient Batching: floor((N-G)/X) stays constant over ranges of G. Compute
+      how many days this value remains constant and skip that entire block at
+      once instead of simulating each day individually.
