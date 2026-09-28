@@ -57,6 +57,14 @@ USACO:
         Key Idea: Try all possible values of a[0] from smallest to largest.
           Once a[0] is chosen, all other values are forced by a[i + 1] =
           b[i] - a[i]. The first valid permutation is lexicographically smallest.
+      Bronze 3: Race
+        Techniques: Binary Search (Last True)
+        Complexity: O(NlogK)
+        Difficulty: Medium
+        Key Idea: For a candidate top speed s, calculate the distance required
+          to accelerate to s, then decelerate to x, then remaining time
+          travelled at speed s to reach total k meters travelled. Binary search
+          to find max s.
 
 
 Techniques:
@@ -92,6 +100,10 @@ Techniques:
       USACO 2019-Dec-S1: MooBuzz:
         Let count(x) be how many numbers <= x are not divisible by 3 or 5.
         Find the smallest x such that count(x) >= n.
+    Last True:
+      USACO 2020-Jan-B3: Race:
+        Binary search for the maximum top speed s. For each s, determine if
+        Bessie can reach s in a valid race, and the race time in seconds.
   Two Pointers:
     Sliding Window:
       USACO 2019-Dec-S2: Meetings:
