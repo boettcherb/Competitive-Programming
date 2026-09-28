@@ -65,6 +65,13 @@ USACO:
           to accelerate to s, then decelerate to x, then remaining time
           travelled at speed s to reach total k meters travelled. Binary search
           to find max s.
+      Silver 1: Berry Picking
+        Techniques: Brute Force (Candidate Enumeration), Greedy
+        Complexity: O(N^2 * logN)
+        Difficulty: Medium
+        Key Idea: Try every basket size b as the minimum size of one of Else's
+        baskets. Greedily make as many full baskets of size b as possible. If
+        < k baskets are filled, use the largest remainders for Bessie's baskets.
 
 
 Techniques:
@@ -86,6 +93,9 @@ Techniques:
         Try  each possible first value a[0] in increasing order. For each
         candidate, reconstruct the permutation using a[i+1] = b[i] - a[i],
         and check whether all values are unique and valid.
+      USACO 2020-Jan-S1: Berry Picking:
+        Try every possible value b for the size of Elsie's smallest basket.
+        For each b, greedily evaluate the best possible basket allocation.
     Permutation Enumeration:
       USACO 2019-Dec-B3: Livestock Lineup:
         Start with the cows in alphabetical order and use next_permutation
@@ -95,6 +105,10 @@ Techniques:
     USACO 2020-Jan-B1: Word Processor:
       For each word, place it on the current line if it fits. Otherwise,
       start a new line and place it there.
+    USACO 2020-Jan-S1: Berry Picking:
+      For a fixed basket size b, make as many full size-b baskets as possible.
+      If fewer than K baskets are filled, give Bessie the largest remaining
+      remainders.
   Binary Search:
     First True:
       USACO 2019-Dec-S1: MooBuzz:
