@@ -79,6 +79,13 @@ USACO:
         Key Idea: Binary search to find X. In the check(x) function, use math
           to batch together all days with the same y value instead of
           simulating days one at a time.
+      Silver 3: Wormhole Sort
+        Techniques: Binary Search (Last True), Graphs (DSU)
+        Complexity: O(log(10^9) * (N + M))
+        Difficulty: Hard
+        Key Idea: Binary search to find w, the maximum minimal wormhole width.
+          For each w, use a DSU data structure to see if every cow can reach
+          their sorted position using only edges with weight >= w.
 
 
 Techniques:
@@ -128,6 +135,9 @@ Techniques:
       USACO 2020-Jan-S2: Loan Repayment:
         Binary search for the largest value X such that the loan can still be
         repaid within K days.
+      USACO 2020-Jan-S3: Wormhole Sort:
+        Binary search for the maximum minimal wormhole width that allows all
+        cows to still be sorted.
   Two Pointers:
     Sliding Window:
       USACO 2019-Dec-S2: Meetings:
@@ -139,6 +149,10 @@ Techniques:
       USACO 2019-Dec-S3: Milk Visits:
         Use flood fill/dfs to find connected components with the same milk type.
         Queries can then be answered in O(1).
+    Connected Components / DSU:
+      USACO 2020-Jan-S3: Wormhole Sort:
+        Use a DSU data structure to determine if cow i is in a connected
+        component that allows it to travel to position i.
   Math:
     USACO 2020-Jan-S2: Loan Repayment:
       Quotient Batching: floor((N-G)/X) stays constant over ranges of G. Compute
