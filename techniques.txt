@@ -94,6 +94,12 @@ USACO:
         Difficulty: Easy
         Key Idea: with N <= 100, we can brute force all N^3 combinations of
           3 points to find the triangle with the max area.
+      Bronze 2: Breed Flip:
+        Techniques: Greedy
+        Complexity: O(N)
+        Difficulty: Easy
+        Key Idea: Each contiguous segment where A and B differ can be fixed
+          with one flip. The answer is the number of segments.
 
 
 Techniques:
@@ -133,6 +139,9 @@ Techniques:
       For a fixed basket size b, make as many full size-b baskets as possible.
       If fewer than K baskets are filled, give Bessie the largest remaining
       remainders.
+    USACO 2020-Feb-B2: Mad Scientist
+      Search through the two strings A and B and find contiguous segments where
+      they differ. The number of flips needed is the number of segments.
   Binary Search:
     First True:
       USACO 2019-Dec-S1: MooBuzz:
