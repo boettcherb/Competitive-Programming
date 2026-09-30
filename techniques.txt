@@ -74,7 +74,7 @@ USACO:
           Greedily make as many full baskets of size b as possible. If < k
           baskets are filled, use the largest remainders for Bessie's baskets.
       Silver 2: Loan Repayment
-        Techniques: Binary Search (Last True), Math
+        Techniques: Binary Search (Last True), Math (Quotient Batching)
         Complexity: O(logN * sqrt(N))
         Difficulty: Medium
         Key Idea: Binary search to find X. In the check(x) function, use math
@@ -100,6 +100,14 @@ USACO:
         Difficulty: Easy
         Key Idea: Each contiguous segment where A and B differ can be fixed
           with one flip. The answer is the number of segments.
+      Bronze 3: Swapity Swap:
+        Techniques: Simulation (Cycle Detection)
+        Complexity: O(N * S), where S is the permutation period
+        Difficulty: Easy
+        Key Idea: Repeatedly apply the two reversals until the entire cow
+          ordering returns to its original state. The process is periodic, so
+          replace K with (K mod cycleLength) and simulate only the remaining
+          repetitions.
 
 
 Techniques:
@@ -177,3 +185,8 @@ Techniques:
       Quotient Batching: floor((N-G)/X) stays constant over ranges of G. Compute
       how many days this value remains constant and skip that entire block at
       once instead of simulating each day individually.
+  Simulation:
+    USACO 2020-Feb-B3: Swapity Swap:
+      Cycle Detection: Apply the repeated transformation until the permutation
+      returns to its starting state. Then use (K mod cycleLength) to skip
+      complete cycles.
