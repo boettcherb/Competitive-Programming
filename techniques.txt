@@ -108,6 +108,14 @@ USACO:
           ordering returns to its original state. The process is periodic, so
           replace K with (K mod cycleLength) and simulate only the remaining
           repetitions.
+      Silver 1: Swapity Swapity Swap
+        Techniques: Binary Lifting
+        Complexity: O(NM + NlogK)
+        Difficulty: Medium
+        Key Idea: One complete sequence of the M reversals defines a permutation
+          of positions. Use binary lifting to find the position of each cow
+          after K repetitions: precompute each cow's 2^j-th successor and use
+          the binary representation of K to find its K-th successor. 
 
 
 Techniques:
@@ -180,6 +188,12 @@ Techniques:
       USACO 2020-Jan-S3: Wormhole Sort:
         Use a DSU data structure to determine if cow i is in a connected
         component that allows it to travel to position i.
+  Binary Lifting:
+    K-th successor:
+      USACO 2020-Feb-S1: Swapity Swapity Swap:
+        After simulating all M swaps, we know the successor for each cow after
+        one iteration. Use binary lifting to find the successor after K
+        iterations.
   Math:
     USACO 2020-Jan-S2: Loan Repayment:
       Quotient Batching: floor((N-G)/X) stays constant over ranges of G. Compute
