@@ -11,7 +11,7 @@
 #include <cassert>
 
 #ifdef DB_LOCAL
-#include "algorithms/pprint.hpp"
+#include "techniques/pprint.hpp"
 #else
 #define pprint(...)
 #define db(x)
