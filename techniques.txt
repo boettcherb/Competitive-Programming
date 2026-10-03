@@ -115,7 +115,21 @@ USACO:
         Key Idea: One complete sequence of the M reversals defines a permutation
           of positions. Use binary lifting to find the position of each cow
           after K repetitions: precompute each cow's 2^j-th successor and use
-          the binary representation of K to find its K-th successor. 
+          the binary representation of K to find its K-th successor.
+      Silver 2: Triangles
+        Techniques: Prefix Sums, Math
+        Complexity: O(NlogN)
+        Difficulty: Hard
+        Key Idea: Group points sharing an x-coordinate and points sharing a
+          y-coordinate. For two points on a vertical line, we can calculate the
+          'average' x-value of points along the corresponding horizontal line
+          which forms a right triangle. Furthermore, instead of considering
+          just two points along the vertical line, take the 'average' of y
+          values along that line. For each point (X, Y), use prefix sums to
+          calculate dx (the average distance of x values of points on y=Y from
+          X), and dy (the avg dist of y values of points on x=X from Y). The
+          triangles with a right angle on (X, Y) contribute dx*dy total area.
+
 
 
 Techniques:
@@ -158,6 +172,11 @@ Techniques:
     USACO 2020-Feb-B2: Mad Scientist
       Search through the two strings A and B and find contiguous segments where
       they differ. The number of flips needed is the number of segments.
+  Prefix Sums:
+    USACO 2020-Feb-S2: Triangles
+      For a sorted list of points, use prefix sums to calculate the total dist
+      from x to all other positions: left = countLeft * x - sumLeft;
+      right = sumRight - countRight * x;
   Binary Search:
     First True:
       USACO 2019-Dec-S1: MooBuzz:
@@ -199,6 +218,10 @@ Techniques:
       Quotient Batching: floor((N-G)/X) stays constant over ranges of G. Compute
       how many days this value remains constant and skip that entire block at
       once instead of simulating each day individually.
+    USACO 2020-Feb-S2: Triangles
+      This problem involves geometry and recognizing that you can take the
+      'average' of all points along a line instead of considering each
+      individually (which would cause TLE).
   Simulation:
     USACO 2020-Feb-B3: Swapity Swap:
       Cycle Detection: Apply the repeated transformation until the permutation
