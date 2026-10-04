@@ -7,6 +7,14 @@ USACO:
         Difficulty: Trivial
         Key Idea: Directly simulate the fixed sequence of 100 pours. Transfer
           as much milk as possible on each operation.
+      Bronze 2: The Bucket List
+        Techniques: Sorting, Sweep Line (Event Processing)
+        Complexity: O(NlogN)
+        Difficulty: Easy
+        Key Idea: Convert each cow's interval into a +b start event and a -b
+          end event. Sort all events by time and sweep through them, tracking
+          the number of buckets currently in use. The maximum running total is
+          the number of buckets needed.
   2019-2020:
     2019 December:
       Bronze 1: Cow Gymnastics
@@ -216,7 +224,14 @@ Techniques:
       USACO 2019-Dec-S2: Meetings:
         After finding T, for each right-moving cow cR at position p, find left-
         moving cows with positions in the range (p, p + 2T]. Sliding window
-        works because the left- and right-moving cow lists are sorted by position.
+        works because the left- and right-moving cow lists are sorted by
+        position.
+  Sweep Line:
+    Event Processsing:
+      USACO 2018-Dec-B2: The Bucket List:
+        Represent each interval by a start event (+b) and end event (-b).
+        Sort events by time and maintain a running total. The maximum total
+        is the maximum number of simultaneously required buckets.
   Graphs:
     Connected Components / Flood Fill:
       USACO 2019-Dec-S3: Milk Visits:
@@ -226,15 +241,15 @@ Techniques:
       USACO 2020-Jan-S3: Wormhole Sort:
         Use a DSU data structure to determine if cow i is in a connected
         component that allows it to travel to position i.
-  Bipartite:
-    USACO 2020-Feb-S3: Clock Tree
-      Color the tree by depth parity from any root. Each edge connects opposite
-      colors, so each move alternates which side's clock sum increases by 1.
-      Therefore, the difference between the two side sums mod 12 can only
-      alternate between two consecutive values. Let the side sums be even and
-      odd. If even ≡ odd (mod 12), every node is a valid start. If even ≡ odd
-      + 1, nodes on the even side are valid. If odd ≡ even + 1, nodes on the
-      odd side are valid. Otherwise, no node works.
+    Bipartite:
+      USACO 2020-Feb-S3: Clock Tree
+        Color the tree by depth parity from any root. Every edge connects
+        opposite colors, so each move alternates which side's clock sum
+        increases by 1. Therefore, the difference between the two side sums mod
+        12 can only alternate between two consecutive values. Let the side sums
+        be even and odd. If even ≡ odd (mod 12), every node is a valid start.
+        If even ≡ odd + 1, nodes on the even side are valid. If odd ≡ even + 1,
+        nodes on the odd side are valid. Otherwise, no node works.
   Trees:
     Postorder Traversal:
       USACO 2020-Feb-S3: Clock Tree:
