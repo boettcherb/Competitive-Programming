@@ -1,4 +1,12 @@
 USACO:
+  2018-2019:
+    2018 December:
+      Bronze 1: Mixing Milk
+        Techniques: Simulation
+        Complexity: O(1)
+        Difficulty: Trivial
+        Key Idea: Directly simulate the fixed sequence of 100 pours. Transfer
+          as much milk as possible on each operation.
   2019-2020:
     2019 December:
       Bronze 1: Cow Gymnastics
@@ -139,7 +147,7 @@ USACO:
           travel to it and back x times where x = 12 - (vertex clock value). Of
           course, this also means adjust the current vertex's clock by the same
           amount. There is also an O(N) solution involving bipartite graphs and
-          summing up the clock values of nodes on each side 
+          summing up the clock values of nodes on each side.
 
 
 
@@ -250,6 +258,9 @@ Techniques:
       'average' of all points along a line instead of considering each
       individually (which would cause TLE).
   Simulation:
+    USACO 2018-Dec-B1: Mixing Milk:
+      Directly simulate the fixed sequence of 100 pours, transferring as much
+      milk as possible on each operation.
     USACO 2020-Feb-B3: Swapity Swap:
       Cycle Detection: Apply the repeated transformation until the permutation
       returns to its starting state. Then use (K mod cycleLength) to skip
