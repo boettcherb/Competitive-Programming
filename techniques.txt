@@ -129,6 +129,17 @@ USACO:
           calculate dx (the average distance of x values of points on y=Y from
           X), and dy (the avg dist of y values of points on x=X from Y). The
           triangles with a right angle on (X, Y) contribute dx*dy total area.
+      Silver 3: Clock Tree
+        Techniques: Trees (Postorder Traversal), Graphs (Bipartite)
+        Complexity: O(N^2)
+        Difficulty: Easy
+        Key Idea: Since N <= 2500, we can try all vertices as roots. For each
+          traversal, visit a child's children first and make sure their clocks
+          are set to 12, then set the child to 12. When setting a vertex to 12,
+          travel to it and back x times where x = 12 - (vertex clock value). Of
+          course, this also means adjust the current vertex's clock by the same
+          amount. There is also an O(N) solution involving bipartite graphs and
+          summing up the clock values of nodes on each side 
 
 
 
@@ -207,6 +218,22 @@ Techniques:
       USACO 2020-Jan-S3: Wormhole Sort:
         Use a DSU data structure to determine if cow i is in a connected
         component that allows it to travel to position i.
+  Bipartite:
+    USACO 2020-Feb-S3: Clock Tree
+      Color the tree by depth parity from any root. Each edge connects opposite
+      colors, so each move alternates which side's clock sum increases by 1.
+      Therefore, the difference between the two side sums mod 12 can only
+      alternate between two consecutive values. Let the side sums be even and
+      odd. If even ≡ odd (mod 12), every node is a valid start. If even ≡ odd
+      + 1, nodes on the even side are valid. If odd ≡ even + 1, nodes on the
+      odd side are valid. Otherwise, no node works.
+  Trees:
+    Postorder Traversal:
+      USACO 2020-Feb-S3: Clock Tree:
+        Root the tree at the chosen starting node. Process each child subtree
+        completely before the parent, fixing the child's clock to 12 before
+        returning. After all children are fixed, only the current node's clock
+        still needs to be resolved.
   Binary Lifting:
     K-th successor:
       USACO 2020-Feb-S1: Swapity Swapity Swap:
