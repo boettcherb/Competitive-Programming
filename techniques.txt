@@ -60,6 +60,20 @@ USACO:
         Key Idea: Use flood fill to create connected components with the same
           milk type. For each query, if the endpoints are in different
           components, the farmer will always be happy.
+      Gold 1: Milk Pumping
+        Techniques: Graphs (Dijkstra), Brute Force (Candidate Enumeration)
+        Complexity: O(M^2 log N)
+        Difficulty: Medium
+        Key Idea: Use Dijkstra's algorithm, but instead of storing the min cost
+          to each node, store a list of non-dominated (flow, cost) pairs. (A
+          pair (f1, c1) is dominated by another (f2, c2) if f2 >= f1 and c2 <=
+          c1. This keeps a Pareto Frontier for each node.
+          The standard solution is to use brute force to test all possible min
+          flow values. For each flow value f from 1 to 1000, only add edges
+          whose flow is >= f. Run Dijkstra's on the graph using min cost, and
+          the answer is f / (the min cost). This requires 1000 instances of
+          Dijkstra, but since N and M are <= 1000, this still works.
+
     2020 January:
       Bronze 1: Word Processor
         Techniques: Greedy
@@ -176,6 +190,10 @@ Techniques:
       USACO 2019-Dec-B2: Where Am I?:
         Try each possible K from 1 to N and test whether all K-length
         substrings are unique
+      USACO 2019-Dec-G1: Milk Pumping
+        Try all possible min-flow values from 1 to 1000. Only add edges to the
+        graph if the edge's flow is >= the min flow. Run Dijkstra for each
+        min-flow value.
       USACO 2020-Jan-B2: Photoshoot
         Try  each possible first value a[0] in increasing order. For each
         candidate, reconstruct the permutation using a[i+1] = b[i] - a[i],
@@ -241,6 +259,12 @@ Techniques:
       USACO 2020-Jan-S3: Wormhole Sort:
         Use a DSU data structure to determine if cow i is in a connected
         component that allows it to travel to position i.
+    Dijkstra:
+      USACO 2019-Dec-G1: Milk Pumping:
+        Use Dijkstra's algorithm to find the optimal path from node 1 to node
+        n. Based on which approach is taken, either run Dijkstra 1000 times on
+        the graph with different sets of edges, or run once but store a Pareto
+        Frontier or lookup table for each node.
     Bipartite:
       USACO 2020-Feb-S3: Clock Tree
         Color the tree by depth parity from any root. Every edge connects
