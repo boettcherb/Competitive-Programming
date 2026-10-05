@@ -73,7 +73,15 @@ USACO:
           whose flow is >= f. Run Dijkstra's on the graph using min cost, and
           the answer is f / (the min cost). This requires 1000 instances of
           Dijkstra, but since N and M are <= 1000, this still works.
-
+      Gold 2: Milk Visits
+        Techniques: Trees (Heavy-Light Decomposition)
+        Complexity: O((N + M) log^2 N)
+        Difficulty: Very Hard
+        Key Idea: This problem asks for path queries on a tree, so HLD is a
+          good choice: decompose the tree into heavy paths so any u-v path
+          consists of only O(logN) segments. Within each chain, store the
+          indices of each milk type and binary search to test whether a
+          queried segment contains the desired type.
     2020 January:
       Bronze 1: Word Processor
         Techniques: Greedy
@@ -281,6 +289,12 @@ Techniques:
         completely before the parent, fixing the child's clock to 12 before
         returning. After all children are fixed, only the current node's clock
         still needs to be resolved.
+    Heavy-Light Decomposition:
+      USACO 2019-Dec-G2: Milk Visits:
+        Choose each node's largest-subtree child as its heavy child. This
+        decomposes any tree path into O(log N) contiguous heavy-chain segments.
+        For each chain, store the positions of each milk type and binary search
+        each queried segment for the requested type.
   Binary Lifting:
     K-th successor:
       USACO 2020-Feb-S1: Swapity Swapity Swap:
