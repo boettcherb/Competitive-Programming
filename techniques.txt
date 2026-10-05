@@ -5,16 +5,18 @@ USACO:
         Techniques: Simulation
         Complexity: O(1)
         Difficulty: Trivial
-        Key Idea: Directly simulate the fixed sequence of 100 pours. Transfer
-          as much milk as possible on each operation.
+        Key Idea: Directly simulate the fixed sequence of 100 pours. For each
+          pour, transfer min(source amount, destination remaining capacity).
+
       Bronze 2: The Bucket List
         Techniques: Sorting, Sweep Line (Event Processing)
-        Complexity: O(NlogN)
+        Complexity: O(N log N)
         Difficulty: Easy
-        Key Idea: Convert each cow's interval into a +b start event and a -b
-          end event. Sort all events by time and sweep through them, tracking
-          the number of buckets currently in use. The maximum running total is
-          the number of buckets needed.
+        Key Idea: Convert each cow's interval into two events: +b buckets at
+          the start time and -b buckets at the end time. Sort all events by
+          time and sweep from left to right, maintaining the number of buckets
+          currently in use. The maximum running total is the answer.
+
   2019-2020:
     2019 December:
       Bronze 1: Cow Gymnastics
@@ -22,299 +24,334 @@ USACO:
           Preprocessing (Inverse Mapping)
         Complexity: O(KN^2)
         Difficulty: Easy
-        Key Idea: Store each cow's position in each session so that pairwise
-          ranking comparisons become O(1). Avoid repeatedly scanning rankings
-          to find cow positions.
+        Key Idea: Convert each session from "cows in ranked order" into an
+          inverse lookup rankings[cow][session] = position. Then enumerate all
+          pairs of cows and compare their positions across all K sessions in
+          O(1) per session. A pair is consistent if the same cow is ahead in
+          every session.
+
       Bronze 2: Where Am I?
         Techniques: Brute Force (Candidate Enumeration)
-        Complexity: O(N^2)
+        Complexity: O(N^2) conceptually
         Difficulty: Easy
-        Key Idea: Try every possible K and generate every K-length substring.
-          Use a set to detect whether any substring occurs more than once.
+        Key Idea: Try each possible substring length K from smallest to
+          largest. For a fixed K, generate every length-K substring and use a
+          set to detect duplicates. The first K for which every substring is
+          unique is the answer.
+
       Bronze 3: Livestock Lineup
         Techniques: Brute Force (Permutation Enumeration)
         Complexity: O(8! * N * 8)
         Difficulty: Easy
-        Key Idea: Enumerate all cow orderings in lexicographical order and
-          output the first ordering satisfying all adjacency constraints.
+        Key Idea: Start with the eight cow names in alphabetical order and use
+          next_permutation to enumerate lineups lexicographically. Check each
+          lineup against every adjacency constraint. The first valid lineup is
+          automatically the lexicographically smallest answer.
+
       Silver 1: MooBuzz
         Techniques: Binary Search (First True)
-        Complexity: O(logN)
+        Complexity: O(log N)
         Difficulty: Easy
-        Key Idea: For any value x, let count(x) be how many numbers <= x are
-          not divisible by 3 or 5. Use binary search to find the first value
-          x such that count(x) >= n
+        Key Idea: For any x, count how many integers in [1, x] are not
+          divisible by 3 or 5 using inclusion-exclusion:
+          count(x) = x - x/3 - x/5 + x/15. The predicate count(x) >= N is
+          monotonic, so binary search for the first x for which it is true.
+
       Silver 2: Meetings
         Techniques: Sorting, Two Pointers (Sliding Window)
-        Complexity: O(NlogN)
+        Complexity: O(N log N)
         Difficulty: Hard
-        Key Idea: Treat collisions as cows passing through each other. Separate
-          the cows into left-moving and right-moving, and use sorting and exit
-          exit events to find T. Then, use a two-pointer method to count
-          collisions by finding pairs of cows such that they are moving towards
-          each other and their initial distance is <= 2T.
+        Key Idea: Treat collisions as cows passing through each other; their
+          trajectories are unchanged, while identities/weights effectively
+          swap. Sort cows by position and pair left-exit trajectories with the
+          leftmost cow identities and right-exit trajectories with the
+          rightmost identities to determine the time T when at least half the
+          total weight has exited. Then a right-moving cow at xR meets a
+          left-moving cow at xL by time T iff xR < xL <= xR + 2T. Because the
+          position lists are sorted, maintain moving bounds with two pointers
+          to count all such pairs efficiently.
+
       Silver 3: Milk Visits
-        Techniques: Graphs (Flood Fill)
+        Techniques: Graphs (Connected Components / Flood Fill)
         Complexity: O(N + M)
         Difficulty: Medium
-        Key Idea: Use flood fill to create connected components with the same
-          milk type. For each query, if the endpoints are in different
-          components, the farmer will always be happy.
+        Key Idea: Flood fill through only edges whose endpoints have the same
+          milk type, labeling maximal same-type connected components. If the
+          endpoints of a query are in different components, their unique tree
+          path crosses a type boundary and therefore contains both milk types.
+          If they are in the same component, the entire path has one milk type,
+          so the query succeeds only if that type matches the requested type.
+
       Gold 1: Milk Pumping
-        Techniques: Graphs (Dijkstra), Brute Force (Candidate Enumeration)
-        Complexity: O(M^2 log N)
+        Techniques: Graphs (Multi-State Shortest Path / Pareto Frontier)
+          Alternative: Graphs (Dijkstra), Brute Force (Candidate Enumeration)
+        Complexity: Pareto version: worst-case O(F^2 M + FM log(FM));
+          standard threshold + Dijkstra: O(FM log N), where F <= M
         Difficulty: Medium
-        Key Idea: Use Dijkstra's algorithm, but instead of storing the min cost
-          to each node, store a list of non-dominated (flow, cost) pairs. (A
-          pair (f1, c1) is dominated by another (f2, c2) if f2 >= f1 and c2 <=
-          c1. This keeps a Pareto Frontier for each node.
-          The standard solution is to use brute force to test all possible min
-          flow values. For each flow value f from 1 to 1000, only add edges
-          whose flow is >= f. Run Dijkstra's on the graph using min cost, and
-          the answer is f / (the min cost). This requires 1000 instances of
-          Dijkstra, but since N and M are <= 1000, this still works.
+        Key Idea: A path is determined by two quantities: total cost and
+          bottleneck flow. My solution keeps a Pareto frontier of nondominated
+          (cost, flow) states at each node; a state is useless if another state
+          reaches the same node with no greater cost and no smaller flow.
+          The standard solution instead fixes a candidate minimum flow F,
+          removes all edges with flow < F, and runs Dijkstra to find the
+          minimum-cost remaining path. Since an optimal path's bottleneck must
+          equal some edge flow, trying every distinct flow threshold finds the
+          optimum ratio F / cost.
+
       Gold 2: Milk Visits
         Techniques: Trees (Heavy-Light Decomposition)
         Complexity: O((N + M) log^2 N)
         Difficulty: Very Hard
-        Key Idea: This problem asks for path queries on a tree, so HLD is a
-          good choice: decompose the tree into heavy paths so any u-v path
-          consists of only O(logN) segments. Within each chain, store the
-          indices of each milk type and binary search to test whether a
-          queried segment contains the desired type.
+        Key Idea: This problem asks whether a value occurs on arbitrary tree
+          paths. Use Heavy-Light Decomposition: choose each node's
+          largest-subtree child as its heavy child so any u-v path breaks into
+          only O(log N) contiguous heavy-chain segments. Within each chain,
+          store the indices at which each milk type occurs. For every segment
+          of a query path, binary search that type's index list to test whether
+          it appears in the segment.
+
+      Gold 3: Moortal Cowmbat
+        Techniques: Graphs (Floyd-Warshall), Prefix Sums, Dynamic Programming
+        Complexity: O(M^3 + NM)
+        Difficulty: Very Hard
+        Key Idea:
+          - Floyd-Warshall: Direct conversion i -> j may be more expensive than
+            converting through intermediate letters. Compute the true minimum
+            conversion cost between every pair of letters first.
+          - Prefix Sums: For each target letter c, prefix-sum the cost of
+            converting each string position into c. This makes the cost of
+            converting any substring entirely into c available in O(1).
+          - Dynamic Programming: Let dp[i][c] be the minimum cost for a valid
+            prefix ending in a block of letter c. Either extend the existing
+            c-block by converting the next character to c, or begin a new
+            length-K c-block after the best valid prefix ending K positions
+            earlier.
+
     2020 January:
       Bronze 1: Word Processor
         Techniques: Greedy
         Complexity: O(N)
         Difficulty: Trivial
-        Key Idea: Process words from left to right. At each word, put it on
-          the current line if it fits. Otherwise, start a new line.
+        Key Idea: Process words from left to right. Put each word on the
+          current line if it fits within the K-character limit; otherwise start
+          a new line. Since words must remain in order, there is never a
+          benefit to starting a new line while the next word still fits.
+
       Bronze 2: Photoshoot
         Techniques: Brute Force (Candidate Enumeration)
         Complexity: O(N^2)
         Difficulty: Easy
-        Key Idea: Try all possible values of a[0] from smallest to largest.
-          Once a[0] is chosen, all other values are forced by a[i + 1] =
-          b[i] - a[i]. The first valid permutation is lexicographically smallest.
+        Key Idea: Try possible values of a[0] from smallest to largest. Once
+          a[0] is chosen, every later value is forced by
+          a[i + 1] = b[i] - a[i]. Reconstruct the entire sequence and reject a
+          candidate if any value is outside [1, N] or has already appeared.
+          The first valid reconstruction is lexicographically smallest.
+
       Bronze 3: Race
         Techniques: Binary Search (Last True)
-        Complexity: O(NlogK)
+        Complexity: O(N log K)
         Difficulty: Medium
-        Key Idea: For a candidate top speed s, calculate the distance required
-          to accelerate to s, then decelerate to x, then remaining time
-          travelled at speed s to reach total k meters travelled. Binary search
-          to find max s.
+        Key Idea: For a candidate peak speed S, use arithmetic-series sums to
+          compute the distance needed to accelerate from 1 up to S and, when
+          necessary, decelerate back toward X. If that profile does not already
+          reach K, the remaining distance can be traveled at speed S. Feasible
+          peak speeds form a monotonic prefix, so binary search for the largest
+          feasible S and compute its minimum race time.
+
       Silver 1: Berry Picking
         Techniques: Brute Force (Candidate Enumeration), Greedy
-        Complexity: O(N^2 * logN)
+        Complexity: O(B * (N + K) log N), B <= 1000
         Difficulty: Medium
-        Key Idea: Try every basket size b as the min size of Elsie's baskets.
-          Greedily make as many full baskets of size b as possible. If < k
-          baskets are filled, use the largest remainders for Bessie's baskets.
+        Key Idea: Try every possible basket size b that could be the minimum
+          size among Elsie's baskets. For a fixed b, greedily split each tree
+          into as many full size-b baskets as possible, keeping at most one
+          remainder per tree. If there are at least K full baskets, Bessie can
+          receive K/2 baskets of size b. Otherwise, after accounting for
+          Elsie's K/2 baskets, fill Bessie's remaining baskets with the largest
+          remainders. Take the best result over all b.
+
       Silver 2: Loan Repayment
         Techniques: Binary Search (Last True), Math (Quotient Batching)
-        Complexity: O(logN * sqrt(N))
+        Complexity: O(log N * sqrt(N))
         Difficulty: Medium
-        Key Idea: Binary search to find X. In the check(x) function, use math
-          to batch together all days with the same y value instead of
-          simulating days one at a time.
+        Key Idea: Binary search for the largest X that allows the loan to be
+          repaid within K days. In canRepay(X), the daily payment
+          Y = floor((N - G) / X) often stays unchanged for many consecutive
+          days. Compute how long the current Y remains constant and process
+          that entire block at once instead of simulating one day at a time.
+          Once Y <= M, the rest can be finished using payments of M directly.
+
       Silver 3: Wormhole Sort
         Techniques: Binary Search (Last True), Graphs (DSU)
-        Complexity: O(log(10^9) * (N + M))
+        Complexity: O(log W * (N + M) alpha(N)), plus edge sorting if used
         Difficulty: Hard
-        Key Idea: Binary search to find w, the maximum minimal wormhole width.
-          For each w, use a DSU data structure to see if every cow can reach
-          their sorted position using only edges with weight >= w.
+        Key Idea: For a candidate minimum wormhole width W, keep only edges
+          with width >= W and use DSU to form their connected components. The
+          permutation can be sorted iff every position i is connected to the
+          position containing the cow that belongs at i. This feasibility
+          condition is monotonic as W changes, so binary search for the largest
+          W that still allows sorting.
+
     2020 February:
       Bronze 1: Triangles
         Techniques: Brute Force (Combination Enumeration)
         Complexity: O(N^3)
         Difficulty: Easy
-        Key Idea: with N <= 100, we can brute force all N^3 combinations of
-          3 points to find the triangle with the max area.
-      Bronze 2: Breed Flip:
+        Key Idea: With N <= 100, enumerate every combination of three points.
+          A valid triangle needs two points sharing an x-coordinate and two
+          sharing a y-coordinate. For a valid triple, twice its area is the
+          horizontal leg length times the vertical leg length, so no division
+          by 2 is needed.
+
+      Bronze 2: Breed Flip
         Techniques: Greedy
         Complexity: O(N)
         Difficulty: Easy
-        Key Idea: Each contiguous segment where A and B differ can be fixed
-          with one flip. The answer is the number of segments.
-      Bronze 3: Swapity Swap:
+        Key Idea: Each maximal contiguous segment where strings A and B differ
+          can be fixed with exactly one flip, independently of the other
+          mismatch segments. Count how many mismatch segments begin.
+
+      Bronze 3: Swapity Swap
         Techniques: Simulation (Cycle Detection)
         Complexity: O(N * S), where S is the permutation period
         Difficulty: Easy
-        Key Idea: Repeatedly apply the two reversals until the entire cow
-          ordering returns to its original state. The process is periodic, so
-          replace K with (K mod cycleLength) and simulate only the remaining
-          repetitions.
-      Silver 1: Swapity Swapity Swap
-        Techniques: Binary Lifting
-        Complexity: O(NM + NlogK)
-        Difficulty: Medium
-        Key Idea: One complete sequence of the M reversals defines a permutation
-          of positions. Use binary lifting to find the position of each cow
-          after K repetitions: precompute each cow's 2^j-th successor and use
-          the binary representation of K to find its K-th successor.
-      Silver 2: Triangles
-        Techniques: Prefix Sums, Math
-        Complexity: O(NlogN)
-        Difficulty: Hard
-        Key Idea: Group points sharing an x-coordinate and points sharing a
-          y-coordinate. For two points on a vertical line, we can calculate the
-          'average' x-value of points along the corresponding horizontal line
-          which forms a right triangle. Furthermore, instead of considering
-          just two points along the vertical line, take the 'average' of y
-          values along that line. For each point (X, Y), use prefix sums to
-          calculate dx (the average distance of x values of points on y=Y from
-          X), and dy (the avg dist of y values of points on x=X from Y). The
-          triangles with a right angle on (X, Y) contribute dx*dy total area.
-      Silver 3: Clock Tree
-        Techniques: Trees (Postorder Traversal), Graphs (Bipartite)
-        Complexity: O(N^2)
-        Difficulty: Easy
-        Key Idea: Since N <= 2500, we can try all vertices as roots. For each
-          traversal, visit a child's children first and make sure their clocks
-          are set to 12, then set the child to 12. When setting a vertex to 12,
-          travel to it and back x times where x = 12 - (vertex clock value). Of
-          course, this also means adjust the current vertex's clock by the same
-          amount. There is also an O(N) solution involving bipartite graphs and
-          summing up the clock values of nodes on each side.
+        Key Idea: Repeatedly apply the two reversals until either K operations
+          have been simulated or the entire permutation returns to its starting
+          state. Once the arrangement repeats, the process is periodic, so use
+          K mod cycleLength to skip complete cycles and simulate only the
+          remaining repetitions.
 
+      Silver 1: Swapity Swapity Swap
+        Techniques: Functional Graphs, Binary Lifting
+        Complexity: O(NM + N log K)
+        Difficulty: Medium
+        Key Idea: One complete sequence of the M reversals defines a
+          permutation f of positions, which can be viewed as a functional
+          graph. Precompute jump[j][i] = f^(2^j)(i). Then use the binary
+          representation of K to combine power-of-two jumps and find f^K(i)
+          for every cow in O(log K) time each.
+
+      Silver 2: Triangles
+        Techniques: Sorting, Prefix Sums, Math
+        Complexity: O(N log N)
+        Difficulty: Hard
+        Key Idea: Treat each point (x, y) as the right-angle corner. Its total
+          triangle contribution factors as (sum of horizontal distances to
+          points with the same y) * (sum of vertical distances to points with
+          the same x). Group and sort points by shared x- and y-coordinates.
+          For a sorted coordinate list, use prefix sums to compute the total
+          distance from a point to all other points on that line in O(1) once
+          its index is known (or O(log N) with a lower_bound lookup). Sum the
+          product for every point.
+
+      Silver 3: Clock Tree
+        Techniques: Trees (Postorder Traversal), Graphs (Bipartite), Invariants
+        Complexity: My solution: O(N^2); optimal solution: O(N)
+        Difficulty: Easy
+        Key Idea:
+          - O(N^2) solution: Try every room as the root. Use postorder DFS so
+            each child subtree is completely resolved before its parent. After
+            fixing a child subtree, make enough parent-child traversals to set
+            the child's clock to 12; those traversals also advance the parent's
+            clock. After all children are fixed, the root is valid iff its
+            remaining clock state can finish correctly.
+          - O(N) solution: Every tree is bipartite, so color nodes by depth
+            parity from any root. Each move crosses an edge and therefore
+            alternates which color class receives a +1 clock update. If the two
+            color-class sums are congruent mod 12, every node is a valid start.
+            If one side's sum is exactly one greater mod 12, exactly the nodes
+            on that side are valid. Otherwise no starting node works. This is a
+            useful example of combining bipartite coloring with a modular
+            invariant.
 
 
 Techniques:
   Preprocessing:
     Inverse Mapping:
-      USACO 2019-Dec-B1: Cow Gymnastics:
-        Convert the input from "list of cows in ranked order per session"
-        to "ranking given cow and session" so comparisons are O(1).
+      USACO 2019-Dec-B1: Cow Gymnastics
+
   Brute Force:
     Combination Enumeration:
-      USACO 2019-Dec-B1: Cow Gymnastics:
-        Enumerate all pairs of n cows and compare their rankings for all
-        k sessions.
+      USACO 2019-Dec-B1: Cow Gymnastics
       USACO 2020-Feb-B1: Triangles
-        Enumerate all triplets of points to find the max-area triangle.
     Candidate Enumeration:
-      USACO 2019-Dec-B2: Where Am I?:
-        Try each possible K from 1 to N and test whether all K-length
-        substrings are unique
-      USACO 2019-Dec-G1: Milk Pumping
-        Try all possible min-flow values from 1 to 1000. Only add edges to the
-        graph if the edge's flow is >= the min flow. Run Dijkstra for each
-        min-flow value.
+      USACO 2019-Dec-B2: Where Am I?
+      USACO 2019-Dec-G1: Milk Pumping (standard solution)
       USACO 2020-Jan-B2: Photoshoot
-        Try  each possible first value a[0] in increasing order. For each
-        candidate, reconstruct the permutation using a[i+1] = b[i] - a[i],
-        and check whether all values are unique and valid.
-      USACO 2020-Jan-S1: Berry Picking:
-        Try every possible value b for the size of Elsie's smallest basket.
-        For each b, greedily evaluate the best possible basket allocation.
+      USACO 2020-Jan-S1: Berry Picking
     Permutation Enumeration:
-      USACO 2019-Dec-B3: Livestock Lineup:
-        Start with the cows in alphabetical order and use next_permutation
-        to enumerate through all 8! possible lineups. The first satisfying
-        all adjacency constraints is lexicographically smallest.
-  Greedy:
-    USACO 2020-Jan-B1: Word Processor:
-      For each word, place it on the current line if it fits. Otherwise,
-      start a new line and place it there.
-    USACO 2020-Jan-S1: Berry Picking:
-      For a fixed basket size b, make as many full size-b baskets as possible.
-      If fewer than K baskets are filled, give Bessie the largest remaining
-      remainders.
-    USACO 2020-Feb-B2: Mad Scientist
-      Search through the two strings A and B and find contiguous segments where
-      they differ. The number of flips needed is the number of segments.
-  Prefix Sums:
+      USACO 2019-Dec-B3: Livestock Lineup
+
+  Sorting:
+    USACO 2018-Dec-B2: The Bucket List
+    USACO 2019-Dec-S2: Meetings
     USACO 2020-Feb-S2: Triangles
-      For a sorted list of points, use prefix sums to calculate the total dist
-      from x to all other positions: left = countLeft * x - sumLeft;
-      right = sumRight - countRight * x;
+
+  Greedy:
+    USACO 2020-Jan-B1: Word Processor
+    USACO 2020-Jan-S1: Berry Picking
+    USACO 2020-Feb-B2: Breed Flip
+
+  Prefix Sums:
+    USACO 2019-Dec-G3: Moortal Cowmbat
+    USACO 2020-Feb-S2: Triangles
+
   Binary Search:
     First True:
-      USACO 2019-Dec-S1: MooBuzz:
-        Let count(x) be how many numbers <= x are not divisible by 3 or 5.
-        Find the smallest x such that count(x) >= n.
+      USACO 2019-Dec-S1: MooBuzz
     Last True:
-      USACO 2020-Jan-B3: Race:
-        Binary search for the maximum top speed s. For each s, determine if
-        Bessie can reach s in a valid race, and the race time in seconds.
-      USACO 2020-Jan-S2: Loan Repayment:
-        Binary search for the largest value X such that the loan can still be
-        repaid within K days.
-      USACO 2020-Jan-S3: Wormhole Sort:
-        Binary search for the maximum minimal wormhole width that allows all
-        cows to still be sorted.
+      USACO 2020-Jan-B3: Race
+      USACO 2020-Jan-S2: Loan Repayment
+      USACO 2020-Jan-S3: Wormhole Sort
+
   Two Pointers:
     Sliding Window:
-      USACO 2019-Dec-S2: Meetings:
-        After finding T, for each right-moving cow cR at position p, find left-
-        moving cows with positions in the range (p, p + 2T]. Sliding window
-        works because the left- and right-moving cow lists are sorted by
-        position.
+      USACO 2019-Dec-S2: Meetings
+
   Sweep Line:
-    Event Processsing:
-      USACO 2018-Dec-B2: The Bucket List:
-        Represent each interval by a start event (+b) and end event (-b).
-        Sort events by time and maintain a running total. The maximum total
-        is the maximum number of simultaneously required buckets.
+    Event Processing:
+      USACO 2018-Dec-B2: The Bucket List
+
+  Dynamic Programming:
+    USACO 2019-Dec-G3: Moortal Cowmbat
+
   Graphs:
     Connected Components / Flood Fill:
-      USACO 2019-Dec-S3: Milk Visits:
-        Use flood fill/dfs to find connected components with the same milk type.
-        Queries can then be answered in O(1).
-    Connected Components / DSU:
-      USACO 2020-Jan-S3: Wormhole Sort:
-        Use a DSU data structure to determine if cow i is in a connected
-        component that allows it to travel to position i.
+      USACO 2019-Dec-S3: Milk Visits
+    DSU:
+      USACO 2020-Jan-S3: Wormhole Sort
+    Multi-State Shortest Path / Pareto Frontier:
+      USACO 2019-Dec-G1: Milk Pumping (my solution)
     Dijkstra:
-      USACO 2019-Dec-G1: Milk Pumping:
-        Use Dijkstra's algorithm to find the optimal path from node 1 to node
-        n. Based on which approach is taken, either run Dijkstra 1000 times on
-        the graph with different sets of edges, or run once but store a Pareto
-        Frontier or lookup table for each node.
+      USACO 2019-Dec-G1: Milk Pumping (standard solution)
+    Floyd-Warshall:
+      USACO 2019-Dec-G3: Moortal Cowmbat
     Bipartite:
       USACO 2020-Feb-S3: Clock Tree
-        Color the tree by depth parity from any root. Every edge connects
-        opposite colors, so each move alternates which side's clock sum
-        increases by 1. Therefore, the difference between the two side sums mod
-        12 can only alternate between two consecutive values. Let the side sums
-        be even and odd. If even ≡ odd (mod 12), every node is a valid start.
-        If even ≡ odd + 1, nodes on the even side are valid. If odd ≡ even + 1,
-        nodes on the odd side are valid. Otherwise, no node works.
+    Functional Graphs:
+      USACO 2020-Feb-S1: Swapity Swapity Swap
+
   Trees:
     Postorder Traversal:
-      USACO 2020-Feb-S3: Clock Tree:
-        Root the tree at the chosen starting node. Process each child subtree
-        completely before the parent, fixing the child's clock to 12 before
-        returning. After all children are fixed, only the current node's clock
-        still needs to be resolved.
+      USACO 2020-Feb-S3: Clock Tree
     Heavy-Light Decomposition:
-      USACO 2019-Dec-G2: Milk Visits:
-        Choose each node's largest-subtree child as its heavy child. This
-        decomposes any tree path into O(log N) contiguous heavy-chain segments.
-        For each chain, store the positions of each milk type and binary search
-        each queried segment for the requested type.
+      USACO 2019-Dec-G2: Milk Visits
+
   Binary Lifting:
-    K-th successor:
-      USACO 2020-Feb-S1: Swapity Swapity Swap:
-        After simulating all M swaps, we know the successor for each cow after
-        one iteration. Use binary lifting to find the successor after K
-        iterations.
+    K-th Successor:
+      USACO 2020-Feb-S1: Swapity Swapity Swap
+
   Math:
-    USACO 2020-Jan-S2: Loan Repayment:
-      Quotient Batching: floor((N-G)/X) stays constant over ranges of G. Compute
-      how many days this value remains constant and skip that entire block at
-      once instead of simulating each day individually.
-    USACO 2020-Feb-S2: Triangles
-      This problem involves geometry and recognizing that you can take the
-      'average' of all points along a line instead of considering each
-      individually (which would cause TLE).
+    Quotient Batching:
+      USACO 2020-Jan-S2: Loan Repayment
+    Geometry / Distance Factorization:
+      USACO 2020-Feb-S2: Triangles
+
+  Invariants:
+    Bipartite / Modular:
+      USACO 2020-Feb-S3: Clock Tree
+
   Simulation:
-    USACO 2018-Dec-B1: Mixing Milk:
-      Directly simulate the fixed sequence of 100 pours, transferring as much
-      milk as possible on each operation.
-    USACO 2020-Feb-B3: Swapity Swap:
-      Cycle Detection: Apply the repeated transformation until the permutation
-      returns to its starting state. Then use (K mod cycleLength) to skip
-      complete cycles.
+    USACO 2018-Dec-B1: Mixing Milk
+    Cycle Detection:
+      USACO 2020-Feb-B3: Swapity Swap
