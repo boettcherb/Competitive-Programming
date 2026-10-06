@@ -9,6 +9,7 @@
 #include <map>
 #include <cmath>
 #include <cassert>
+#include <iomanip>
 
 #ifdef DB_LOCAL
 #include "techniques/pprint.hpp"
