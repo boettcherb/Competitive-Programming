@@ -192,6 +192,17 @@ USACO:
           condition is monotonic as W changes, so binary search for the largest
           W that still allows sorting.
 
+      Gold 1: Time is Mooney
+        Techniques: Dynamic Programming (Graph DP)
+        Complexity: O(TM)
+        Difficulty: Medium
+        Key Idea: Let dp[t][v] be the maximum money earned after exactly t days
+          while ending at city v. Since every edge takes one day, transition
+          from dp[t-1][u] to dp[t][v] across each directed edge u -> v. For
+          every t where city 1 is reachable again, evaluate dp[t][1] - C*t^2
+          and take the maximum. The quadratic penalty ensures we only need to
+          check t up to 1000, which makes this solution feasible.
+
     2020 February:
       Bronze 1: Triangles
         Techniques: Brute Force (Combination Enumeration)
@@ -314,6 +325,8 @@ Techniques:
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
+    Graph DP:
+      USACO 2020-Jan-G1: Time is Mooney
 
   Graphs:
     Connected Components / Flood Fill:
