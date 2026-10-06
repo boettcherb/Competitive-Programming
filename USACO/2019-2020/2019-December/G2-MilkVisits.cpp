@@ -3,58 +3,55 @@
 #include <algorithm>
 #include <map>
 
-struct Path {
-    int top_node;
-    std::vector<int> arr;
-    std::map<int, std::vector<int>> idxs;
+struct TypeIndex {
+    std::vector<int> base;
+    std::map<int, std::vector<int>> mp;
 
-    void build() {
-        for (int i = 0; i < (int) arr.size(); ++i) {
-            idxs[arr[i]].push_back(i);
+    TypeIndex(std::vector<int>& pos, std::vector<int>& arr, int n) {
+        base = std::vector<int>(n + 1);
+        for (int i = 1; i <= n; ++i) {
+            base[pos[i]] = arr[i];
+        }
+        for (int i = 1; i <= n; ++i) {
+            mp[base[i]].push_back(i);
         }
     }
 
-    bool contains(int l, int r, int x) {
-        if (idxs.find(x) == idxs.end()) return false;
-        auto itr = std::lower_bound(idxs[x].begin(), idxs[x].end(), l);
-        return itr != idxs[x].end() && *itr <= r;
+    bool query(int l, int r, int x) {
+        if (mp.find(x) == mp.end()) return false;
+        auto itr = std::lower_bound(mp[x].begin(), mp[x].end(), l);
+        return itr != mp[x].end() && *itr <= r;
     }
 };
 
 std::vector<std::vector<int>> g;
-std::vector<int> type, depth, parent, subtreeSize, path;
-std::vector<Path> paths;
+std::vector<int> type, depth, parent, heavy, head, pos;
+int curPos = 1;
 
-void dfs(int cur, int p, int d) {
-    depth[cur] = d;
-    subtreeSize[cur] = 1;
-    parent[cur] = p;
+int dfs(int cur, int par) {
+    parent[cur] = par;
+    int subtreeSize = 1, maxChildSize = 0;
     for (int child : g[cur]) {
-        if (child == p) continue;
-        dfs(child, cur, d + 1);
-        subtreeSize[cur] += subtreeSize[child];
-    }
-}
-
-void hld(int cur, int p, bool new_tree) {
-    if (new_tree) {
-        paths.push_back(Path());
-        paths.back().top_node = cur;
-    }
-    path[cur] = (int) paths.size() - 1;
-    paths.back().arr.push_back(type[cur]);
-    int max_child = -1;
-    for (int child : g[cur]) {
-        if (child == p) continue;
-        if (max_child == -1 || subtreeSize[child] > subtreeSize[max_child]) {
-            max_child = child;
+        if (child == par) continue;
+        depth[child] = depth[cur] + 1;
+        int childSize = dfs(child, cur);
+        subtreeSize += childSize;
+        if (childSize > maxChildSize) {
+            maxChildSize = childSize;
+            heavy[cur] = child;
         }
     }
-    if (max_child == -1) return;
-    hld(max_child, cur, false);
+    return subtreeSize;
+}
+
+void hld(int cur, int top) {
+    head[cur] = top;
+    pos[cur] = curPos++;
+    if (heavy[cur] == -1) return;
+    hld(heavy[cur], top);
     for (int child : g[cur]) {
-        if (child == p || child == max_child) continue;
-        hld(child, cur, true);
+        if (child == parent[cur] || child == heavy[cur]) continue;
+        hld(child, child);
     }
 }
 
@@ -69,7 +66,7 @@ int main() {
 
     int n, m;
     std::cin >> n >> m;
-    type = depth = parent = subtreeSize = path = std::vector<int>(n + 1);
+    type = depth = parent = head = pos = std::vector<int>(n + 1);
     for (int i = 1; i <= n; ++i) {
         std::cin >> type[i];
     }
@@ -80,32 +77,24 @@ int main() {
         g[u].push_back(v);
         g[v].push_back(u);
     }
-    dfs(1, -1, 0);
-    hld(1, -1, true);
-    for (Path& p : paths) {
-        p.build();
-    }
+    heavy = std::vector<int>(n + 1, -1);
+    dfs(1, -1);
+    hld(1, 1);
+    TypeIndex index(pos, type, n);
     for (int i = 0; i < m; ++i) {
         int u, v, t;
         std::cin >> u >> v >> t;
         bool found = false;
-        while (u != v && !found) {
-            Path& uPath = paths[path[u]];
-            Path& vPath = paths[path[v]];
-            if (path[u] == path[v]) {
-                if (depth[u] > depth[v]) std::swap(u, v);
-                int td = depth[uPath.top_node];
-                found = uPath.contains(depth[u] - td, depth[v] - td, t);
-                break;
-            }
-            if (depth[uPath.top_node] > depth[vPath.top_node]) {
-                std::swap(u, v);
-            }
-            Path& curPath = paths[path[v]];
-            found = curPath.contains(0, depth[v] - depth[curPath.top_node], t);
-            v = parent[curPath.top_node];
+        while (head[u] != head[v] && !found) {
+            if (depth[head[u]] > depth[head[v]]) std::swap(u, v);
+            found = index.query(pos[head[v]], pos[v], t);
+            v = parent[head[v]];
         }
-        std::cout << (found || (u == v && type[u] == t));
+        if (!found) {
+            if (depth[u] > depth[v]) std::swap(u, v);
+            found = index.query(pos[u], pos[v], t);
+        }
+        std::cout << found;
     }
     std::cout << '\n';
 }
