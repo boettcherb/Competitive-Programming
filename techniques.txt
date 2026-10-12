@@ -203,6 +203,23 @@ USACO:
           and take the maximum. The quadratic penalty ensures we only need to
           check t up to 1000, which makes this solution feasible.
 
+      Gold 2: Farmer John Solves 3SUM
+        Techniques: Prefix Sums (2D), Preprocessing (Frequency Counting)
+        Complexity: O(N^2 + Q)
+        Difficulty: Very Hard
+        Key Idea: First compute how many zero-sum triples have each pair (i, j)
+          as their exact leftmost and rightmost indices. Fix i and sweep j to
+          the right, maintaining frequencies of values at indices strictly
+          between i and j. For each j, the middle value must equal
+          -(A[i] + A[j]), so the frequency table gives the number of triples
+          with endpoints i and j in O(1). This produces an N x N table where
+          count[i][j] contains only triples with exact outer endpoints i and j.
+          Convert it into range answers using 2D prefix-style accumulation:
+          accumulate over possible left endpoints and right endpoints so that
+          count[l][r] becomes the number of triples whose leftmost index is >=
+          l and rightmost index is <= r. These are exactly the triples
+          completely contained in [l, r], so every query is then O(1).
+
     2020 February:
       Bronze 1: Triangles
         Techniques: Brute Force (Combination Enumeration)
@@ -280,6 +297,8 @@ Techniques:
   Preprocessing:
     Inverse Mapping:
       USACO 2019-Dec-B1: Cow Gymnastics
+    Frequency Counting:
+      USACO 2020-Jan-G2: Farmer John Solves 3SUM
 
   Brute Force:
     Combination Enumeration:
@@ -306,6 +325,8 @@ Techniques:
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
     USACO 2020-Feb-S2: Triangles
+    2D:
+      USACO 2020-Jan-G2: Farmer John Solves 3SUM
 
   Binary Search:
     First True:
