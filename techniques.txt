@@ -345,6 +345,18 @@ AtCoder:
         Therefore, if K lies within the initial run of 1s, the answer is 1;
         otherwise the answer is the first non-1 digit.
 
+    D: AtCoder Express 2
+      Techniques: Prefix Sums (2D)
+      Complexity: O(N^2 + M + Q)
+      Difficulty: Medium
+      Key Idea: Build a 2D table where count[l][r] is the number of trains
+        whose exact starting and ending stations are l and r. A query [p, q]
+        needs every train satisfying p <= l <= r <= q. Accumulate the table
+        over both endpoint dimensions so that dp[p][q] becomes the number of
+        trains with starting station >= p and ending station <= q. These are
+        exactly the trains completely contained within [p, q], allowing every
+        query to be answered in O(1).
+
 
 Techniques:
   Preprocessing:
@@ -381,6 +393,7 @@ Techniques:
     USACO 2020-Feb-S2: Triangles
     2D:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
+      AtCoder Beginner Contest 105 D: AtCoder Express 2
 
   Binary Search:
     First True:
@@ -435,7 +448,7 @@ Techniques:
 
   Math:
     Algebra:
-      ABC-106-A: Garden
+      AtCoder Beginner Contest 106 A: Garden
     Quotient Batching:
       USACO 2020-Jan-S2: Loan Repayment
     Geometry / Distance Factorization:
@@ -443,7 +456,7 @@ Techniques:
   
   Number Theory:
     Divisors:
-      ABC-106-B: 105
+      AtCoder Beginner Contest 106 B: 105
 
   Invariants:
     Bipartite / Modular:
@@ -455,7 +468,7 @@ Techniques:
       USACO 2020-Feb-B3: Swapity Swap
   
   Observation:
-    ABC-106-C: Infinity
+    AtCoder Beginner Contest 106 C: Infinity
   
   Segment Tree:
     Range minimum:
