@@ -314,6 +314,20 @@ USACO:
             invariant.
 
 
+AtCoder:
+  Beginner Contest 106:
+    A: Garden
+      Techniques: Math (Algebra)
+      Complexity: O(1)
+      Difficulty: Trivial
+      Key Idea: The initial area is A*B. The horizontal road removes one unit 
+        from A and the vertical road removes one unit from B, so subtract
+        (a + b). One single tile was removed twice, so add it back, giving
+        a * b - (a + b) + 1. Another way to think of it: The roads remove one
+        unit of width and one unit of height from the A-by-B rectangle, so the
+        remaining area is (A - 1)(B - 1).
+
+
 Techniques:
   Preprocessing:
     Inverse Mapping:
@@ -402,6 +416,8 @@ Techniques:
     USACO 2020-Jan-G3: Springboards
 
   Math:
+    Algebra:
+      ABC-106-A: Garden
     Quotient Batching:
       USACO 2020-Jan-S2: Loan Repayment
     Geometry / Distance Factorization:
