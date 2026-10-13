@@ -327,6 +327,14 @@ AtCoder:
         unit of width and one unit of height from the A-by-B rectangle, so the
         remaining area is (A - 1)(B - 1).
 
+    B: 105
+      Techniques: Number Theory (Divisors)
+      Complexity: O(N sqrt N)
+      Difficulty: Easy
+      Key Idea: For each odd number from 1..N, count its positive divisors.
+        They come in pairs (d, n/d), so it is enough to test possible divisors
+        through sqrt(n). Count the number if it has exactly 8 divisors.
+
 
 Techniques:
   Preprocessing:
@@ -422,6 +430,10 @@ Techniques:
       USACO 2020-Jan-S2: Loan Repayment
     Geometry / Distance Factorization:
       USACO 2020-Feb-S2: Triangles
+  
+  Number Theory:
+    Divisors:
+      ABC-106-B: 105
 
   Invariants:
     Bipartite / Modular:
