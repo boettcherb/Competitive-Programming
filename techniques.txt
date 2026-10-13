@@ -220,6 +220,27 @@ USACO:
           l and rightmost index is <= r. These are exactly the triples
           completely contained in [l, r], so every query is then O(1).
 
+      Gold 3: Springboards
+        Techniques: Sorting, Sweep Line (Event Processing),
+          Coordinate Compression, Segment Tree (Range Minimum)
+        Complexity: O(P log P)
+        Difficulty: Very Hard
+        Key Idea: Sweep all springboard endpoints in reverse coordinate order.
+          Let dp[i] be the min distance from the end of springboard i to (N,N).
+          From a point (x,y), a future springboard with start (sx,sy) can be
+          used only if sx >= x and sy >= y. The cost of walking to that
+          springboard and then optimally reaching the target is
+          (sx - x) + (sy - y) + dp[i] = (dp[i] + sx + sy) - (x + y).
+          Therefore, when the reverse sweep reaches a springboard's start,
+          insert dp[i] + sx + sy at its y-coordinate. When it reaches a
+          springboard's end, query the minimum inserted value among
+          y-coordinates >= its y, giving the best reachable next springboard.
+          A segment tree over coordinate-compressed y-values supports these
+          suffix minimum queries and point updates in O(log P). Also consider
+          walking directly from each endpoint to (N,N). Finally, the answer is
+          the minimum of walking directly from (0,0) to (N,N) and walking from
+          (0,0) to any springboard start followed by its precomputed dp value.
+
     2020 February:
       Bronze 1: Triangles
         Techniques: Brute Force (Combination Enumeration)
@@ -315,6 +336,7 @@ Techniques:
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
     USACO 2019-Dec-S2: Meetings
+    USACO 2020-Jan-G3: Springboards
     USACO 2020-Feb-S2: Triangles
 
   Greedy:
@@ -343,6 +365,7 @@ Techniques:
   Sweep Line:
     Event Processing:
       USACO 2018-Dec-B2: The Bucket List
+      USACO 2020-Jan-G3: Springboards
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
@@ -374,6 +397,9 @@ Techniques:
   Binary Lifting:
     K-th Successor:
       USACO 2020-Feb-S1: Swapity Swapity Swap
+  
+  Coordinate Compression:
+    USACO 2020-Jan-G3: Springboards
 
   Math:
     Quotient Batching:
@@ -389,3 +415,7 @@ Techniques:
     USACO 2018-Dec-B1: Mixing Milk
     Cycle Detection:
       USACO 2020-Feb-B3: Swapity Swap
+  
+  Segment Tree:
+    Range minimum:
+      USACO 2020-Jan-G3: Springboards
