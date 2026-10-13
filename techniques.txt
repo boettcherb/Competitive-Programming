@@ -335,6 +335,16 @@ AtCoder:
         They come in pairs (d, n/d), so it is enough to test possible divisors
         through sqrt(n). Count the number if it has exactly 8 divisors.
 
+    C: To Infinity
+      Techniques: Observation
+      Complexity: O(|S|)
+      Difficulty: Easy
+      Key Idea:
+        Leading 1s never change under the transformation. The first digit greater
+        than 1 repeatedly expands into an enormous block of copies of itself.
+        Therefore, if K lies within the initial run of 1s, the answer is 1;
+        otherwise the answer is the first non-1 digit.
+
 
 Techniques:
   Preprocessing:
@@ -443,6 +453,9 @@ Techniques:
     USACO 2018-Dec-B1: Mixing Milk
     Cycle Detection:
       USACO 2020-Feb-B3: Swapity Swap
+  
+  Observation:
+    ABC-106-C: Infinity
   
   Segment Tree:
     Range minimum:
