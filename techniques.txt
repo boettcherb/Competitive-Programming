@@ -374,6 +374,17 @@ AtCoder:
         count each bounce whose position is at most X. Include the initial
         bounce at position 0.
 
+    C: Rectangle Cutting
+      Techniques: Math (Geometry)
+      Complexity: O(1)
+      Difficulty: Easy
+      Key Idea: Any line passing through the center of a rectangle divides its
+        area exactly in half. The given point and the center always determine
+        such a line, so the maximum possible smaller area is W*H/2. There are
+        multiple optimal cuts only when the given point is itself the center
+        (any line containing the center point divides the area evenly). Watch
+        out for integer overflow and integer division rounding!
+
 
 Techniques:
   Preprocessing:
@@ -471,6 +482,7 @@ Techniques:
       USACO 2020-Jan-S2: Loan Repayment
     Geometry:
       USACO 2020-Feb-S2: Triangles
+      AtCoder Beginner Contest 130 C: Rectangle Cutting
   
   Number Theory:
     Divisors:
