@@ -281,7 +281,7 @@ USACO:
           for every cow in O(log K) time each.
 
       Silver 2: Triangles
-        Techniques: Sorting, Prefix Sums, Math
+        Techniques: Sorting, Prefix Sums, Math (Geometry)
         Complexity: O(N log N)
         Difficulty: Hard
         Key Idea: Treat each point (x, y) as the right-angle corner. Its total
@@ -365,6 +365,16 @@ AtCoder:
       Key Idea: Directly follow the condition in the statement: output 0 if
         X < A, otherwise output 10.
 
+    B: Bounding
+      Techniques: Prefix Sums
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: The position of each bounce is the sum of all lengths traveled
+        so far. Maintain this cumulative distance while reading the input and
+        count each bounce whose position is at most X. Include the initial
+        bounce at position 0.
+
+
 Techniques:
   Preprocessing:
     Inverse Mapping:
@@ -398,6 +408,7 @@ Techniques:
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
     USACO 2020-Feb-S2: Triangles
+    AtCoder Beginner Contest 130 B: Bounding
     2D:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
       AtCoder Beginner Contest 105 D: AtCoder Express 2
@@ -458,7 +469,7 @@ Techniques:
       AtCoder Beginner Contest 106 A: Garden
     Quotient Batching:
       USACO 2020-Jan-S2: Loan Repayment
-    Geometry / Distance Factorization:
+    Geometry:
       USACO 2020-Feb-S2: Triangles
   
   Number Theory:
