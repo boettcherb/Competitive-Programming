@@ -412,6 +412,22 @@ AtCoder:
         otherwise: dp[i][j] = dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1]
         Initialize dp[i][0] = dp[0][j] = 1 for the empty subsequence.
 
+    F: Minimum Bounding Box
+      Techniques: Math (Piecewise Linear Functions), Math (Geometry),
+        Brute Force (Candidate Enumeration)
+      Complexity: O(N log N)
+      Difficulty: Hard
+      Key Idea: For each direction, only the extreme initial coordinates can
+        ever define xmin, xmax, ymin, or ymax. Each possible boundary position
+        is therefore a linear function of time with slope -1, 0, or +1. The
+        four bounding-box boundaries are minima or maxima of these linear
+        functions, so they are piecewise linear. The width and height are also
+        piecewise linear, and between two times where the controlling boundary
+        changes, the bounding-box area reaches its minimum at an endpoint.
+        Enumerate every nonnegative critical time at which two candidate
+        boundary functions intersect. Also include t = 0. Evaluate the
+        bounding-box area at every such time and take the minimum.
+
 
 Techniques:
   Preprocessing:
@@ -429,6 +445,7 @@ Techniques:
       USACO 2019-Dec-G1: Milk Pumping (standard solution)
       USACO 2020-Jan-B2: Photoshoot
       USACO 2020-Jan-S1: Berry Picking
+      AtCoder Beginner Contest 130 F: Minimum Bounding Box
     Permutation Enumeration:
       USACO 2019-Dec-B3: Livestock Lineup
 
@@ -508,11 +525,14 @@ Techniques:
   Math:
     Algebra:
       AtCoder Beginner Contest 106 A: Garden
-    Quotient Batching:
-      USACO 2020-Jan-S2: Loan Repayment
     Geometry:
       USACO 2020-Feb-S2: Triangles
       AtCoder Beginner Contest 130 C: Rectangle Cutting
+      AtCoder Beginner Contest 130 F: Minimum Bounding Box
+    Piecewise Linear Functions:
+      AtCoder Beginner Contest 130 F: Minimum Bounding Box
+    Quotient Batching:
+      USACO 2020-Jan-S2: Loan Repayment
   
   Number Theory:
     Divisors:
