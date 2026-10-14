@@ -396,6 +396,22 @@ AtCoder:
         [l, r'], where r' >= r, is also valid. Count all of those at once, then
         remove A[l] and move to the next left endpoint.
 
+    E: Common Subsequence
+      Techniques: Dynamic Programming, Prefix Sums (2D)
+      Complexity: O(NM)
+      Difficulty: Very Hard
+      Key Idea: Let dp[i][j] be the number of equal pairs of subsequences that
+        can be formed using the first i elements of S and the first j elements
+        of T (including the empty subsequence). Consider combining dp[i-1][j]
+        and dp[i][j-1]. Normally their overlap, dp[i-1][j-1], is counted twice
+        and must be subtracted. However, when S[i] == T[j], every common
+        subsequence represented by that overlap also creates one new common
+        subsequence pair by appending S[i] and T[j]. Those new pairs exactly
+        replace the overlap that would otherwise be subtracted. Therefore:
+        if S[i] == T[j]: dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        otherwise: dp[i][j] = dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1]
+        Initialize dp[i][0] = dp[0][j] = 1 for the empty subsequence.
+
 
 Techniques:
   Preprocessing:
@@ -434,6 +450,7 @@ Techniques:
     2D:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
       AtCoder Beginner Contest 105 D: AtCoder Express 2
+      AtCoder Beginner Context 130 E: Common Subsequence
 
   Binary Search:
     First True:
@@ -455,6 +472,7 @@ Techniques:
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
+    AtCoder Beginner Context 130 E: Common Subsequence
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
 
