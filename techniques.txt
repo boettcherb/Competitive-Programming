@@ -385,6 +385,17 @@ AtCoder:
         (any line containing the center point divides the area evenly). Watch
         out for integer overflow and integer division rounding!
 
+    D: Enough Array
+      Techniques: Two Pointers (Sliding Window)
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Since every array element is positive, increasing the right
+        endpoint can only increase the window sum. For each left endpoint,
+        advance the right pointer until the sum first becomes at least K. If
+        [l, r] is the shortest valid range beginning at l, then every range
+        [l, r'], where r' >= r, is also valid. Count all of those at once, then
+        remove A[l] and move to the next left endpoint.
+
 
 Techniques:
   Preprocessing:
@@ -435,6 +446,7 @@ Techniques:
   Two Pointers:
     Sliding Window:
       USACO 2019-Dec-S2: Meetings
+      AtCoder Beginner Contest 130 D: Enough Array
 
   Sweep Line:
     Event Processing:
