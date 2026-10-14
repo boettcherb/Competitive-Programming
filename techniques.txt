@@ -357,6 +357,13 @@ AtCoder:
         exactly the trains completely contained within [p, q], allowing every
         query to be answered in O(1).
 
+  Beginner Contest 130:
+    A: Rounding
+      Techniques: None
+      Complexity: O(1)
+      Difficulty: Trivial
+      Key Idea: Directly follow the condition in the statement: output 0 if
+        X < A, otherwise output 10.
 
 Techniques:
   Preprocessing:
