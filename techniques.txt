@@ -510,6 +510,15 @@ AtCoder:
         predecessors of v have already been processed when v is reached, dp[v]
         is final. The answer is the maximum dp value over all vertices.
 
+    H: Grid 1
+      Techniques: Dynamic Programming (Grid DP)
+      Complexity: O(HW)
+      Difficulty: Easy
+      Key Idea: Let dp[i][j] be the number of valid paths from the top-left
+        corner to cell (i,j). If the cell is blocked, dp[i][j] = 0. Otherwise,
+        the only possible final move comes from above or from the left:
+        dp[i][j] = dp[i-1][j] + dp[i][j-1]. Take all counts modulo 1e9+7.
+
 
 
 Techniques:
@@ -580,6 +589,8 @@ Techniques:
     0-1 Knapsack:
       AtCoder Educational DP Contest D: Knapsack 1
       AtCoder Educational DP Contest E: Knapsack 2
+    Grid DP:
+      AtCoder Educational DP Contest H: Grid 1
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
       AtCoder Educational DP Contest G: Longest Path
