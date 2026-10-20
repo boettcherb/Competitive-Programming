@@ -428,6 +428,18 @@ AtCoder:
         boundary functions intersect. Also include t = 0. Evaluate the
         bounding-box area at every such time and take the minimum.
 
+  Educational DP Contest:
+    A: Frog 1
+      Techniques: Dynamic Programming
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Let dp[i] be the minimum total cost to reach stone i. The frog
+        can reach stone i only from i-1 or i-2, so the optimal way to reach i
+        is the cheaper of those two possibilities: dp[i-1] + |h[i] - h[i-1]|,
+        dp[i-2] + |h[i] - h[i-2]|. Each state depends only on previously
+        computed states, so process the stones from left to right.
+
+
 
 Techniques:
   Preprocessing:
@@ -467,7 +479,7 @@ Techniques:
     2D:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
       AtCoder Beginner Contest 105 D: AtCoder Express 2
-      AtCoder Beginner Context 130 E: Common Subsequence
+      AtCoder Beginner Contest 130 E: Common Subsequence
 
   Binary Search:
     First True:
@@ -489,7 +501,8 @@ Techniques:
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
-    AtCoder Beginner Context 130 E: Common Subsequence
+    AtCoder Beginner Contest 130 E: Common Subsequence
+    AtCoder Educational DP Contest A: Frog 1
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
 
