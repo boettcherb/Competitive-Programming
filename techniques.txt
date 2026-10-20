@@ -439,6 +439,16 @@ AtCoder:
         dp[i-2] + |h[i] - h[i-2]|. Each state depends only on previously
         computed states, so process the stones from left to right.
 
+    B: Frog 2
+      Techniques: Dynamic Programming
+      Complexity: O(NK)
+      Difficulty: Easy
+      Key Idea: Let dp[i] be the minimum cost to reach stone i. The frog may
+        jump to i from any of the previous K stones, so try every possible
+        previous stone: dp[i] = min{1 <= k <= K}: dp[i-k] + |h[i] - h[i-k]|.
+        Every transition comes from an earlier stone, so the states can be
+        computed from left to right.
+
 
 
 Techniques:
@@ -503,6 +513,7 @@ Techniques:
     USACO 2019-Dec-G3: Moortal Cowmbat
     AtCoder Beginner Contest 130 E: Common Subsequence
     AtCoder Educational DP Contest A: Frog 1
+    AtCoder Educational DP Contest B: Frog 2
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
 
