@@ -485,6 +485,20 @@ AtCoder:
         is inverted from "maximum value for each weight" to "minimum weight for
         each value" because the value dimension has the manageable bound.
 
+    F: LCS
+      Techniques: Dynamic Programming
+      Complexity: O(NM)
+      Difficulty: Medium
+      Key Idea: Let dp[i][j] be the length of the longest common subsequence of
+        the first i characters of S and the first j characters of T. If S[i-1]
+        == T[j-1], those matching characters can extend an optimal LCS
+        of the previous prefixes: dp[i][j] = dp[i-1][j-1] + 1. Otherwise, at
+        least one of the two final characters is not used: dp[i][j] =
+        max(dp[i-1][j], dp[i][j-1]). After computing the table, walk backward
+        from dp[N][M]. If the value came from a diagonal transition, that
+        character belongs to the LCS; otherwise move to a neighboring state
+        with the same optimal value.
+
 
 
 Techniques:
@@ -551,6 +565,7 @@ Techniques:
     AtCoder Educational DP Contest A: Frog 1
     AtCoder Educational DP Contest B: Frog 2
     AtCoder Educational DP Contest C: Vacation
+    AtCoder Educational DP Contest F: LCS
     0-1 Knapsack:
       AtCoder Educational DP Contest D: Knapsack 1
       AtCoder Educational DP Contest E: Knapsack 2
