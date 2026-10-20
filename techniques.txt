@@ -519,6 +519,16 @@ AtCoder:
         the only possible final move comes from above or from the left:
         dp[i][j] = dp[i-1][j] + dp[i][j-1]. Take all counts modulo 1e9+7.
 
+    I: Coins
+      Techniques: Dynamic Programming
+      Complexity: O(N^2)
+      Difficulty: Medium
+      Key Idea: Let dp[i][j] be the probability that exactly j of the first i
+        coins land heads. For coin i, state (i,j) can be reached in two ways:
+        coin i is tails: dp[i-1][j] * (1 - p[i]), or coin i is heads:
+        dp[i-1][j-1] * p[i]. dp[i][j] is the sum of these values. After
+        processing all coins, sum dp[N][j] for every j > N/2.
+
 
 
 Techniques:
@@ -586,6 +596,7 @@ Techniques:
     AtCoder Educational DP Contest B: Frog 2
     AtCoder Educational DP Contest C: Vacation
     AtCoder Educational DP Contest F: LCS
+    AtCoder Educational DP Contest I: Coins
     0-1 Knapsack:
       AtCoder Educational DP Contest D: Knapsack 1
       AtCoder Educational DP Contest E: Knapsack 2
