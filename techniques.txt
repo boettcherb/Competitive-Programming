@@ -460,6 +460,16 @@ AtCoder:
         dp[i-1][C]) with similar transitions for B and C. The answer is the
         maximum of the three possible activities on the final day.
 
+    D: Knapsack 1
+      Techniques: Dynamic Programming (0-1 Knapsack)
+      Complexity: O(NW)
+      Difficulty: Medium
+      Key Idea: Let dp[i][w] be the maximum total value obtainable using the
+        first i items with total weight at most w. For each item, either do not
+        take it: dp[i][w] = dp[i-1][w] or, if it fits, take it: dp[i][w] =
+        max(dp[i][w], dp[i-1][w-weight[i]] + value[i]). Since each transition
+        uses the previous item layer, every item can be chosen at most once.
+
 
 
 Techniques:
@@ -526,6 +536,8 @@ Techniques:
     AtCoder Educational DP Contest A: Frog 1
     AtCoder Educational DP Contest B: Frog 2
     AtCoder Educational DP Contest C: Vacation
+    0-1 Knapsack:
+      AtCoder Educational DP Contest D: Knapsack 1
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
 
