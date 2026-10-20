@@ -470,6 +470,21 @@ AtCoder:
         max(dp[i][w], dp[i-1][w-weight[i]] + value[i]). Since each transition
         uses the previous item layer, every item can be chosen at most once.
 
+    E: Knapsack 2
+      Techniques: Dynamic Programming (0/1 Knapsack)
+      Complexity: O(NV), where V is the sum of all item values
+      Difficulty: Medium
+      Key Idea: A normal knapsack DP indexed by weight is impossible because W
+        is too large. However, the sum of all item values is small enough to
+        use as the DP dimension instead. Let dp[i][v] be the minimum total
+        weight needed to obtain exactly value v using the first i items. For
+        each item, either skip it or take it: dp[i][v] = min(dp[i-1][v],
+        dp[i-1][v-value[i]] + weight[i]). After processing all items, the
+        answer is the largest value v whose minimum required weight is at most
+        W. This is the same 0/1 knapsack structure as Knapsack 1, but the state
+        is inverted from "maximum value for each weight" to "minimum weight for
+        each value" because the value dimension has the manageable bound.
+
 
 
 Techniques:
@@ -538,6 +553,7 @@ Techniques:
     AtCoder Educational DP Contest C: Vacation
     0-1 Knapsack:
       AtCoder Educational DP Contest D: Knapsack 1
+      AtCoder Educational DP Contest E: Knapsack 2
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
 
