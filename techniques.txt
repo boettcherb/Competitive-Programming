@@ -499,6 +499,17 @@ AtCoder:
         character belongs to the LCS; otherwise move to a neighboring state
         with the same optimal value.
 
+    G: Longest Path
+      Techniques: Graphs (Topological Sort), Dynamic Programming (Graph DP)
+      Complexity: O(N + M)
+      Difficulty: Medium
+      Key Idea: In a DAG, every edge goes from an earlier vertex to a later
+        vertex in some topological ordering. Let dp[v] be the length of the
+        longest path ending at v. Process vertices in topological order, and
+        for every edge v -> u: dp[u] = max(dp[u], dp[v] + 1). Because all
+        predecessors of v have already been processed when v is reached, dp[v]
+        is final. The answer is the maximum dp value over all vertices.
+
 
 
 Techniques:
@@ -571,6 +582,7 @@ Techniques:
       AtCoder Educational DP Contest E: Knapsack 2
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
+      AtCoder Educational DP Contest G: Longest Path
 
   Graphs:
     Connected Components / Flood Fill:
@@ -587,6 +599,8 @@ Techniques:
       USACO 2020-Feb-S3: Clock Tree
     Functional Graphs:
       USACO 2020-Feb-S1: Swapity Swapity Swap
+    Topological Sort:
+      AtCoder Educational DP Contest G: Longest Path
 
   Trees:
     Postorder Traversal:
