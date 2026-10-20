@@ -449,6 +449,17 @@ AtCoder:
         Every transition comes from an earlier stone, so the states can be
         computed from left to right.
 
+    C: Vacation
+      Techniques: Dynamic Programming
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Let dp[i][a] be the maximum happiness after day i if activity a
+        is performed on that day. Since the same activity cannot be performed
+        on consecutive days, the previous day must use one of the other two
+        activities. Therefore: dp[i][A] = happiness[i][A] + max(dp[i-1][B],
+        dp[i-1][C]) with similar transitions for B and C. The answer is the
+        maximum of the three possible activities on the final day.
+
 
 
 Techniques:
@@ -514,6 +525,7 @@ Techniques:
     AtCoder Beginner Contest 130 E: Common Subsequence
     AtCoder Educational DP Contest A: Frog 1
     AtCoder Educational DP Contest B: Frog 2
+    AtCoder Educational DP Contest C: Vacation
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
 
