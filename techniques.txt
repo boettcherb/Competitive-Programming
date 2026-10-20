@@ -529,6 +529,20 @@ AtCoder:
         dp[i-1][j-1] * p[i]. dp[i][j] is the sum of these values. After
         processing all coins, sum dp[N][j] for every j > N/2.
 
+    J: Sushi
+      Techniques: Dynamic Programming (Expected Value DP)
+      Complexity: O(N^3)
+      Difficulty: Hard
+      Key Idea: The exact identities of the plates do not matter. A state can
+        be described only by: (i, j, k), the number of plates with 1, 2 and 3
+        sushi, respectively. Let E(i,j,k) be the expected number of operations
+        remaining. There are t = i+j+k nonempty plates. Choosing an empty plate
+        leaves the state unchanged, which creates a self-transition in the
+        expectation equation: E = 1 + (N-t)/N * E + i/N * E(i-1,j,k) + j/N *
+        E(i+1,j-1,k) + k/N * E(i,j+1,k-1). Rearranging to remove the self-
+        transition gives: E = N/t + i/t * E(i-1,j,k) + j/t * E(i+1,j-1,k)
+        + k/t * E(i,j+1,k-1). Memoize each (i,j,k) state. E(0,0,0) is 0.
+
 
 
 Techniques:
@@ -605,6 +619,8 @@ Techniques:
     Graph DP:
       USACO 2020-Jan-G1: Time is Mooney
       AtCoder Educational DP Contest G: Longest Path
+    Expected Value DP:
+      AtCoder Educational DP Contest J: Sushi
 
   Graphs:
     Connected Components / Flood Fill:
