@@ -435,6 +435,14 @@ AtCoder:
       Difficulty: Trivial
       Key Idea: Scan every cell of the grid and count how many contain '#'.
 
+    B: Inverse Prefix Sum
+      Techniques: Prefix Sums
+      Complexity: O(N)
+      Difficulty: Trivial
+      Key Idea: If S[i] is the prefix sum through position i, then: A[0] = S[0]
+        A[i] = S[i] - S[i-1]. Recover each original value from the difference
+        between consecutive prefix sums.
+
   Educational DP Contest:
     A: Frog 1
       Techniques: Dynamic Programming
@@ -587,6 +595,7 @@ Techniques:
     USACO 2019-Dec-G3: Moortal Cowmbat
     USACO 2020-Feb-S2: Triangles
     AtCoder Beginner Contest 130 B: Bounding
+    AtCoder Beginner Contest 280 B: Inverse Prefix Sum
     2D:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
       AtCoder Beginner Contest 105 D: AtCoder Express 2
