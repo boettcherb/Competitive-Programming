@@ -451,6 +451,18 @@ AtCoder:
         they differ is the location of the inserted character. If all
         characters of S match, then the extra character is at the end of T.
 
+    D: Factorial and Multiple
+      Techniques: Number Theory (Prime Factorization)
+      Complexity: O(sqrt(K))
+      Difficulty: Medium
+      Key Idea: Prime-factorize K: K = [p1^a1 * p2^a2 * ...]. For K to divide
+        N!, N! must contain at least ai copies of every prime pi. For each
+        prime factor p^a, find the smallest N such that the exponent of
+        p in N! is at least a. This can be done by visiting multiples of p and
+        counting how many copies of p each contributes. Each prime factor gives
+        a minimum required N. The final answer is the maximum of these, since
+        N! must simultaneously contain enough copies of every prime factor.
+
   Educational DP Contest:
     A: Frog 1
       Techniques: Dynamic Programming
@@ -692,6 +704,8 @@ Techniques:
   Number Theory:
     Divisors:
       AtCoder Beginner Contest 106 B: 105
+    Prime Factorization:
+      AtCoder Beginner Contest 280 D: Factorial and Multiple
 
   Invariants:
     Bipartite / Modular:
