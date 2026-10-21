@@ -116,25 +116,35 @@ size[find(x)].
 
 #include <vector>
 
-std::vector<int> parent, size;
+class DSU {
+    std::vector<int> parent, size;
 
-int find(int x) {
-    return x == parent[x] ? x : parent[x] = find(parent[x]);
-}
-
-bool merge(int a, int b) {
-    if ((a = find(a)) == (b = find(b))) return false;
-    if (size[a] < size[b]) std::swap(a, b);
-    parent[b] = a;
-    size[a] += size[b];
-    return true;
-}
-
-int main() {
-    int n = 10;
-    parent = size = std::vector<int>(n);
-    for (int i = 0; i < n; ++i) {
-        parent[i] = i;
-        size[i] = 1;
+public:
+    explicit DSU(int n) {
+        parent = size = std::vector<int>(n);
+        for (int i = 0; i < n; ++i) {
+            parent[i] = i;
+            size[i] = 1;
+        }
     }
-}
+
+    int find(int v) {
+        return v == parent[v] ? v : parent[v] = find(parent[v]);
+    }
+
+    bool merge(int u, int v) {
+        if ((u = find(u)) == (v = find(v))) return false;
+        if (size[u] < size[v]) std::swap(u, v);
+        size[u] += size[v];
+        parent[v] = u;
+        return true;
+    }
+
+    bool sameComp(int u, int v) {
+        return find(u) == find(v);
+    }
+
+    int compSize(int u) {
+        return size[find(u)];
+    }
+};
