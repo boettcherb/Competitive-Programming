@@ -428,6 +428,13 @@ AtCoder:
         boundary functions intersect. Also include t = 0. Evaluate the
         bounding-box area at every such time and take the minimum.
 
+  Beginner Contest 280:
+    A: Pawn on a Grid
+      Techniques: None
+      Complexity: O(HW)
+      Difficulty: Trivial
+      Key Idea: Scan every cell of the grid and count how many contain '#'.
+
   Educational DP Contest:
     A: Frog 1
       Techniques: Dynamic Programming
