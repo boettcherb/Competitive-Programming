@@ -443,6 +443,14 @@ AtCoder:
         A[i] = S[i] - S[i-1]. Recover each original value from the difference
         between consecutive prefix sums.
 
+    C: Extra Character
+      Techniques: None
+      Complexity: O(|S|)
+      Difficulty: Easy
+      Key Idea: Compare S and T from left to right. The first position where
+        they differ is the location of the inserted character. If all
+        characters of S match, then the extra character is at the end of T.
+
   Educational DP Contest:
     A: Frog 1
       Techniques: Dynamic Programming
