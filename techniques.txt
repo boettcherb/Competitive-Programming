@@ -463,6 +463,19 @@ AtCoder:
         a minimum required N. The final answer is the maximum of these, since
         N! must simultaneously contain enough copies of every prime factor.
 
+    E: Critical Hit
+      Techniques: Dynamic Programming (Expected Value DP),
+        Math (Modular Inverse)
+      Complexity: O(N log MOD)
+      Difficulty: Medium
+      Key Idea: Let dp[i] be the expected number of attacks needed when the
+        monster has i HP remaining. Every attack costs one operation. With
+        probability P/100 it deals 2 damage, and otherwise it deals 1 damage,
+        giving: dp[i] = 1 + (P/100) * dp[i-2] + (1-P/100) * dp[i-1].  The base
+        cases are dp[0] = 0 and dp[1] = 1. Because probabilities must be
+        represented modulo 998244353, division by 100 is multiplication by the
+        modular inverse 100^(MOD-2).
+
   Educational DP Contest:
     A: Frog 1
       Techniques: Dynamic Programming
@@ -722,3 +735,9 @@ Techniques:
   Segment Tree:
     Range minimum:
       USACO 2020-Jan-G3: Springboards
+
+
+
+Problems not solved:
+  - ABC280 G (600) and X (600)
+  - AtCoder Educational DP Contest K-Z
