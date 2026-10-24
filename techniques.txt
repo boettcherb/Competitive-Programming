@@ -476,6 +476,21 @@ AtCoder:
         represented modulo 998244353, division by 100 is multiplication by the
         modular inverse 100^(MOD-2).
 
+    AtCoder ABC 280 F: Pay or Receive
+      Techniques: Graphs (DSU, DFS),
+      Complexity: O((N + M + Q) alpha(N))
+      Difficulty: Hard
+      Key Idea: Use a DSU to find connected components. If two vertices are in
+        different components, the asnwer is "nan". Within each component,
+        choose an arbitrary root and use DFS to assign every vertex a cost.
+        When traversing an edge e from u to v, cost[v] = cost[u] + e.cost. If
+        cost[v] has already been assigned to a different value, then there is
+        a cycle with a nonzero score change. Traversing that walk in the
+        profitable direction repeatedly allows the score to grow without bound,
+        so every query within that component is "inf". If no contradiction
+        exists, every path between two vertices has the same total score
+        change, so the answer from X to Y is simply cost[Y] - cost[X].
+
   Educational DP Contest:
     A: Frog 1
       Techniques: Dynamic Programming
@@ -672,16 +687,19 @@ Techniques:
       AtCoder Educational DP Contest J: Sushi
 
   Graphs:
-    Connected Components / Flood Fill:
-      USACO 2019-Dec-S3: Milk Visits
-    DSU:
-      USACO 2020-Jan-S3: Wormhole Sort
-    Multi-State Shortest Path / Pareto Frontier:
-      USACO 2019-Dec-G1: Milk Pumping (my solution)
+    DFS:
+      AtCoder Beginner Contest 280 F: Pay or Receive
     Dijkstra:
       USACO 2019-Dec-G1: Milk Pumping (standard solution)
     Floyd-Warshall:
       USACO 2019-Dec-G3: Moortal Cowmbat
+    Multi-State Shortest Path / Pareto Frontier:
+      USACO 2019-Dec-G1: Milk Pumping (my solution)
+    Connected Components / Flood Fill:
+      USACO 2019-Dec-S3: Milk Visits
+    DSU:
+      USACO 2020-Jan-S3: Wormhole Sort
+      AtCoder Beginner Contest 280 F: Pay or Receive
     Bipartite:
       USACO 2020-Feb-S3: Clock Tree
     Functional Graphs:
