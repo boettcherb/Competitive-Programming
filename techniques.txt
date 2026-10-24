@@ -474,6 +474,17 @@ AtCoder:
         3, the general digit-DP state can be expanded into explicit formulas
         for one, two, and three nonzero digits.
 
+    F: Many Many Paths
+      Techniques: Number Theory (Pascal's Triangle)
+      Complexity: O(MAX + (R2 - R1 + 1))
+      Difficulty: Hard
+      Key Idea: The number of paths from (0,0) to (r,c) is f(r,c) = C(r+c, r).
+        For a fixed row r, use the hockey-stick identity to sum all columns at
+        once: sum from c=c1..c2 of C(r+c, r) = C(r+c2+1, r+1) - C(r+c1, r+1).
+        Precompute factorials and inverse factorials so every binomial
+        coefficient can be evaluated in O(1), then sum this expression over all
+        rows from R1 through R2.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -789,6 +800,8 @@ Techniques:
       AtCoder Beginner Contest 106 B: 105
     Prime Factorization:
       AtCoder Beginner Contest 280 D: Factorial and Multiple
+    Pascal's Triangle:
+      AtCoder Beginner Contest 154 F: Many Many Paths
 
   Invariants:
     Bipartite / Modular:
