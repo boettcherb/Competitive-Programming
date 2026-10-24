@@ -428,6 +428,14 @@ AtCoder:
         boundary functions intersect. Also include t = 0. Evaluate the
         bounding-box area at every such time and take the minimum.
 
+  Beginner Contest 154:
+    A: Remaining Balls
+      Techniques: None
+      Complexity: O(1)
+      Difficulty: Trivial
+      Key Idea: Determine which string U matches and decrement the
+        corresponding count by one.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
