@@ -450,7 +450,7 @@ AtCoder:
         equal values will be next to each other after sorting. Scan adjacent
         pairs and output NO if any pair is equal. Otherwise output YES.
 
-    AtCoder ABC 154 D: Dice in Line
+    D: Dice in Line
       Techniques: Math (Expected Value), Sliding Window
       Complexity: O(N)
       Difficulty: Easy
@@ -460,6 +460,19 @@ AtCoder:
         compute the sum of the first K, then slide the fixed-length window
         across the array by adding the new value and removing the value that
         leaves. Take the maximum window sum.
+
+    E: Almost Everywhere Zero
+      Techniques: Dynamic Programming (Digit DP)
+      Complexity: O(|N|)
+      Difficulty: Hard
+      Key Idea: Precompute how many L-digit strings contain exactly 1, 2, or 3
+        nonzero digits. To count valid integers at most N, first count all
+        valid numbers with fewer effective leading digits, then follow the
+        digits of N from left to right. Whenever a nonzero digit of N is
+        encountered, count choices that place a smaller digit there and freely
+        choose the required remaining nonzero digits in the suffix. Since K <=
+        3, the general digit-DP state can be expanded into explicit formulas
+        for one, two, and three nonzero digits.
 
   Beginner Contest 280:
     A: Pawn on a Grid
@@ -720,6 +733,8 @@ Techniques:
       AtCoder Educational DP Contest G: Longest Path
     Expected Value DP:
       AtCoder Educational DP Contest J: Sushi
+    Digit DP:
+      AtCoder Beginner Contest 154 E: Almost Everywhere Zero
 
   Graphs:
     DFS:
