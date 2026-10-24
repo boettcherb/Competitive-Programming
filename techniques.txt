@@ -442,6 +442,14 @@ AtCoder:
       Difficulty: Trivial
       Key Idea: Output exactly |S| copies of the character 'x'.
 
+    C: Distinct or Not
+      Techniques: Sorting
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: Sort the sequence. If any value occurs more than once, two
+        equal values will be next to each other after sorting. Scan adjacent
+        pairs and output NO if any pair is equal. Otherwise output YES.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -647,6 +655,7 @@ Techniques:
     USACO 2019-Dec-S2: Meetings
     USACO 2020-Jan-G3: Springboards
     USACO 2020-Feb-S2: Triangles
+    AtCoder Beginner Contest 154 C: Distinct or Not
 
   Greedy:
     USACO 2020-Jan-B1: Word Processor
