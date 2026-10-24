@@ -450,6 +450,17 @@ AtCoder:
         equal values will be next to each other after sorting. Scan adjacent
         pairs and output NO if any pair is equal. Otherwise output YES.
 
+    AtCoder ABC 154 D: Dice in Line
+      Techniques: Math (Expected Value), Sliding Window
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: A fair die with faces 1 through P has expected value
+        (P + 1) / 2. The expected sum of K consecutive dice is the sum of their
+        individual expected values. Convert each die to its expected value, ]
+        compute the sum of the first K, then slide the fixed-length window
+        across the array by adding the new value and removing the value that
+        leaves. Take the maximum window sum.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -684,6 +695,7 @@ Techniques:
     Sliding Window:
       USACO 2019-Dec-S2: Meetings
       AtCoder Beginner Contest 130 D: Enough Array
+      AtCoder Beginner Contest 154 D: Dice In Line
 
   Sweep Line:
     Event Processing:
@@ -754,6 +766,8 @@ Techniques:
       AtCoder Beginner Contest 130 F: Minimum Bounding Box
     Quotient Batching:
       USACO 2020-Jan-S2: Loan Repayment
+    Expected Value:
+      AtCoder Beginner Contest 154 D: Dice In Line
   
   Number Theory:
     Divisors:
