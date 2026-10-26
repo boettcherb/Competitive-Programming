@@ -485,6 +485,20 @@ AtCoder:
         coefficient can be evaluated in O(1), then sum this expression over all
         rows from R1 through R2.
 
+  Beginner Contest 184:
+    D: increment of coins
+      Techniques: Dynamic Programming (Expected Value DP)
+      Complexity: O(ABC)
+      Difficulty: Medium
+      Key Idea: Let dp[i][j][k] be the expected number of operations remaining
+        when the three piles have i, j, and k coins. From state (i,j,k), the
+        next state is (i+1,j,k) with probability i/(i+j+k), (i,j+1,k) with
+        probability j/(i+j+k), and (i,j,k+1) with probability k/(i+j+k).
+        Therefore: dp[i][j][k] = 1 + i/(i+j+k) * dp[i+1][j][k] + j/(i+j+k) *
+        dp[i][j+1][k] + k/(i+j+k) * dp[i][j][k+1]. Any state where one pile has
+        reached 100 is terminal and has expected remaining cost 0. Compute the
+        states in decreasing order so every dependent state is already known.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -743,6 +757,7 @@ Techniques:
       USACO 2020-Jan-G1: Time is Mooney
       AtCoder Educational DP Contest G: Longest Path
     Expected Value DP:
+      AtCoder Beginner Contest 184 D: Increment of Coins
       AtCoder Educational DP Contest J: Sushi
     Digit DP:
       AtCoder Beginner Contest 154 E: Almost Everywhere Zero
@@ -822,5 +837,6 @@ Techniques:
 
 
 Problems not solved:
+  - ABC184 A, B, C, E, F
   - ABC280 G (600) and X (600)
   - AtCoder Educational DP Contest K-Z
