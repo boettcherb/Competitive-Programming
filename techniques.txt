@@ -413,6 +413,19 @@ CSES:
         contributes an extra factor of 5, each multiple of 125 contributes
         another, and so forth.
 
+    11: Coin Piles
+      Techniques: Math (Algebra)
+      Complexity: O(T)
+      Difficulty: Easy
+      Key Idea: First, assume that pile A has fewer coins than pile B. Get both
+        piles to have the same number of coins by performing (b-a) operations
+        that remove 1 from A and 2 from B. This is only possible if A is at
+        least half of B. Once the two piles have the same number of coins, say
+        X, they can both be reduced to 0 only if X is divisible by 3. This is
+        because performing one operation of each type removes 3 from each pile.
+        Therefore, a solution exists if 2 * A >= B and (2 * A - B) % 3 == 0.
+
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -981,6 +994,7 @@ Techniques:
     CSES Introductory Problems 9: Bit Strings
     Algebra:
       AtCoder Beginner Contest 106 A: Garden
+      CSES Introductory Problems 11: Coin Piles
     Geometry:
       USACO 2020-Feb-S2: Triangles
       AtCoder Beginner Contest 130 C: Rectangle Cutting
