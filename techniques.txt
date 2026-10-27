@@ -536,6 +536,26 @@ AtCoder:
         first time BFS processes a cell with letter c, enqueue every other
         cell with that letter. After that, never expand letter c again.
 
+    F: Programming Contest
+      Techniques: Meet-in-the-Middle, Binary Search (Bounds)
+      Complexity: O(N * 2^(N/2))
+      Difficulty: Hard
+      Key Idea:
+        Enumerating all 2^N subsets is too expensive for N <= 40, so split the
+        items into two halves.
+
+        Enumerate every subset sum of the first half and every subset sum of the
+        second half. Discard sums greater than T, since all values are positive.
+
+        Sort the subset sums of one half. For each sum s from the other half,
+        binary search for the largest value x such that
+
+            s + x <= T.
+
+        Every complete subset is uniquely formed by combining one subset from
+        each half, so considering all such best combinations finds the maximum
+        achievable sum not exceeding T.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -765,6 +785,8 @@ Techniques:
       USACO 2020-Jan-B3: Race
       USACO 2020-Jan-S2: Loan Repayment
       USACO 2020-Jan-S3: Wormhole Sort
+    Bounds:
+      AtCoder Beginner Contest 184 F: Programming Contest
 
   Two Pointers:
     Sliding Window:
@@ -798,6 +820,9 @@ Techniques:
       AtCoder Educational DP Contest J: Sushi
     Digit DP:
       AtCoder Beginner Contest 154 E: Almost Everywhere Zero
+
+  Meet-in-the-Middle:
+    AtCoder Beginner Contest 184 F: Programming Contest
 
   Graphs:
     BFS:
