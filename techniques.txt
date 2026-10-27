@@ -436,7 +436,7 @@ CSES:
         character symmetrically at the left and right ends, and place the
         single odd-frequency character in the middle if one exists.
 
-    CSES Introductory 13: Gray Code
+    13: Gray Code
       Techniques: Constructive Algorithms, Greedy
       Complexity: O(N * 2^N)
       Difficulty: Easy
@@ -444,6 +444,15 @@ CSES:
         greedily flip the first bit that does not produce a string we have
         already seen. This will produce all 2^N strings. Alternatively, the
         i-th Gray-code value can be found directly with: g(i) = i ^ (i >> 1).
+
+    14: Tower of Hanoi
+      Techniques: Recursion
+      Complexity: O(2^N)
+      Difficulty: Easy
+      Key Idea: To move N disks from source to destination, first move the top
+        N-1 disks to the spare peg, then the largest disk to the destination,
+        then the N-1 disks from the spare peg to the destination. There is
+        exactly 2^N - 1 moves and the recurrence is T(N) = 2T(N-1) + 1.
 
 
 AtCoder:
@@ -949,6 +958,9 @@ Techniques:
     Event Processing:
       USACO 2018-Dec-B2: The Bucket List
       USACO 2020-Jan-G3: Springboards
+
+  Recursion:
+    CSES Introductory Problems 14: Tower of Hanoi
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
