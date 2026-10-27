@@ -372,6 +372,20 @@ CSES:
         values increase or decrease depends on the parity of k, so handle the
         cases y >= x and x > y separately using the layer's parity.
 
+    7: Two Knights
+      Techniques: Dynamic Programming
+      Complexity: O(N)
+      Difficulty: Medium
+      Key Idea: Let dp[i] be the number of ways to place two knights on an ixi
+        chessboard such that they can't attack each other. When moving from i-1
+        to i, there are (i-1)(i-1) old squares and 2*i-1 new squares. 3 cases:
+        (1) Both knights are on an old square (already computed: dp[i - 1]).
+        (2) Both knights are on a new square: Let k = 2*i-1. New placements:
+            k * (k - 1) / 2 - 2. Minus 2 to remove the two duplicates.
+        (3) One knight on each: For each new square, compute how many old
+            squares the other knight could be placed on. Result: (oldSquares -
+            2) * 5 + (oldSquares - 3) * 4 + (oldSquares - 4) * (i - 5) * 2.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -873,6 +887,7 @@ Techniques:
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
+    CSES Introductory Problems 7: Two Knights
     AtCoder Beginner Contest 130 E: Common Subsequence
     AtCoder Educational DP Contest A: Frog 1
     AtCoder Educational DP Contest B: Frog 2
