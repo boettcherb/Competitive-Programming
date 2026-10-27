@@ -362,6 +362,16 @@ CSES:
         groups can also be made valid by outputting the evens first and then
         the odds. N = 2 and N = 3 are the only impossible cases.
 
+    6: Number Spiral
+      Techniques: Math
+      Complexity: O(T)
+      Difficulty: Easy
+      Key Idea: For any coordinate (y, x), the value lies on the square layer
+        k = max(y, x). The diagonal value of that layer is k^2-k+1. From that
+        diagonal, move horizontally or vertically by |y-x| positions. Whether
+        values increase or decrease depends on the parity of k, so handle the
+        cases y >= x and x > y separately using the layer's parity.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -923,6 +933,7 @@ Techniques:
     USACO 2020-Jan-G3: Springboards
 
   Math:
+    CSES Introductory Problems 6: Number Spiral
     Algebra:
       AtCoder Beginner Contest 106 A: Garden
     Geometry:
