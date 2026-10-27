@@ -261,7 +261,7 @@ USACO:
           mismatch segments. Count how many mismatch segments begin.
 
       Bronze 3: Swapity Swap
-        Techniques: Simulation (Cycle Detection)
+        Techniques: Simulation
         Complexity: O(N * S), where S is the permutation period
         Difficulty: Easy
         Key Idea: Repeatedly apply the two reversals until either K operations
@@ -312,6 +312,17 @@ USACO:
             on that side are valid. Otherwise no starting node works. This is a
             useful example of combining bipartite coloring with a modular
             invariant.
+
+
+CSES:
+  Introductory Problems:
+    1: Weird Algorithm
+      Techniques: Simulation
+      Complexity: O(number of generated terms)
+      Difficulty: Trivial
+      Key Idea: Repeatedly apply the rule from the statement: if n is even,
+        replace it with n/2. Otherwise replace it with 3n+1. Output every value
+        until reaching 1. Use a 64-bit integer to avoid overflow.
 
 
 AtCoder:
@@ -743,6 +754,15 @@ Techniques:
     Frequency Counting:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
 
+  Simulation:
+    USACO 2018-Dec-B1: Mixing Milk
+    USACO 2020-Feb-B3: Swapity Swap
+    CSES Introductory Problems 1: Weird Algorithm
+    AtCoder Beginner Contest 184 B: Quizzes
+  
+  Observation:
+    AtCoder Beginner Contest 106 C: Infinity
+
   Brute Force:
     Combination Enumeration:
       USACO 2019-Dec-B1: Cow Gymnastics
@@ -886,15 +906,6 @@ Techniques:
   Invariants:
     Bipartite / Modular:
       USACO 2020-Feb-S3: Clock Tree
-
-  Simulation:
-    USACO 2018-Dec-B1: Mixing Milk
-    AtCoder Beginner Contest 184 B: Quizzes
-    Cycle Detection:
-      USACO 2020-Feb-B3: Swapity Swap
-  
-  Observation:
-    AtCoder Beginner Contest 106 C: Infinity
   
   Segment Tree:
     Range minimum:
