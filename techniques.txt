@@ -526,6 +526,16 @@ AtCoder:
         reached 100 is terminal and has expected remaining cost 0. Compute the
         states in decreasing order so every dependent state is already known.
 
+    E: Third Avenue
+      Techniques: Graphs (BFS)
+      Complexity: O(HW)
+      Difficulty: Medium
+      Key Idea: Treat every traversable grid cell as a graph vertex. Moving to
+        an adjacent non-wall cell costs 1, and teleporting between two cells
+        with the same letter also costs 1, so BFS gives the shortest path. The
+        first time BFS processes a cell with letter c, enqueue every other
+        cell with that letter. After that, never expand letter c again.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -790,6 +800,8 @@ Techniques:
       AtCoder Beginner Contest 154 E: Almost Everywhere Zero
 
   Graphs:
+    BFS:
+      AtCoder Beginner Contest 184 E: Third Avenue
     DFS:
       AtCoder Beginner Contest 280 F: Pay or Receive
     Dijkstra:
