@@ -425,6 +425,17 @@ CSES:
         because performing one operation of each type removes 3 from each pile.
         Therefore, a solution exists if 2 * A >= B and (2 * A - B) % 3 == 0.
 
+    12: Palindrome Reorder
+      Techniques: Strings (Character Frequencies), Constructive Algorithms
+      Complexity: O(N + A), where A is the number of distinct characters
+      Difficulty: Easy
+      Key Idea: In a palindrome, every character must occur in mirrored pairs,
+        except possibly one character placed in the center. Count each
+        character's frequency. If more than one character has an odd count, no
+        palindrome is possible. Otherwise, place count/2 copies of each
+        character symmetrically at the left and right ends, and place the
+        single odd-frequency character in the middle if one exists.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -881,6 +892,7 @@ Techniques:
   Constructive Algorithms:
     CSES Introductory Problems 5: Permutations
     CSES Introductory Problems 8: Two Sets
+    CSES Introductory Problems 12: Palindrome Reorder
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
@@ -1027,6 +1039,8 @@ Techniques:
   Strings:
     Run / Segment Counting:
       CSES Introductory Problems 3: Repetitions
+    Character Frequencies:
+      CSES Introductory Problems 12: Palindrome Reorder
 
 
 
