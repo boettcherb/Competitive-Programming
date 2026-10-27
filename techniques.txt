@@ -395,12 +395,23 @@ CSES:
         from n to 1. Place i in the first set whenever it does not exceed the
         remaining target. Otherwise place it into the second set.
 
-    CSES Introductory 9: Bit Strings
+    9: Bit Strings
       Techniques: Math, Observation
       Complexity: O(N)
       Difficulty: Trivial
       Key Idea: Each of the N positions independently has two choices, so there
         are 2^N bit strings. Compute this value modulo 1e9+7.
+
+    10: Trailing Zeros
+      Techniques: Number Theory
+      Complexity: O(log_5 N)
+      Difficulty: Easy
+      Key Idea: Every trailing zero in n! requires a factor of 10 = 2*5. Since
+        factorials contain more factors of 2 than 5, the answer is the exponent
+        of 5 in n!. Count contributions from multiples of 5, 25, 125, ...:
+        floor(n/5) + floor(n/25) + floor(n/125) + ... Each multiple of 25
+        contributes an extra factor of 5, each multiple of 125 contributes
+        another, and so forth.
 
 AtCoder:
   Beginner Contest 106:
@@ -983,6 +994,7 @@ Techniques:
       AtCoder Beginner Contest 154 D: Dice In Line
   
   Number Theory:
+    CSES Introductory Problems 10: Trailing Zeros
     Divisors:
       AtCoder Beginner Contest 106 B: 105
     Prime Factorization:
