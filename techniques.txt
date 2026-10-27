@@ -486,6 +486,12 @@ AtCoder:
         rows from R1 through R2.
 
   Beginner Contest 184:
+    A: Determinant
+      Techniques: None
+      Complexity: O(1)
+      Difficulty: Trivial
+      Key Idea: Simply print the determinant ad-bc.
+
     D: increment of coins
       Techniques: Dynamic Programming (Expected Value DP)
       Complexity: O(ABC)
@@ -837,6 +843,5 @@ Techniques:
 
 
 Problems not solved:
-  - ABC184 A, B, C, E, F
   - ABC280 G (600) and X (600)
   - AtCoder Educational DP Contest K-Z
