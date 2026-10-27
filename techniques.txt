@@ -500,6 +500,19 @@ AtCoder:
         increases the score by 1. An incorrect answer decreases it by 1 only
         when the current score is positive.
 
+    AtCoder ABC 184 C: Super Ryuma
+      Techniques: Math (Geometry)
+      Complexity: O(1)
+      Difficulty: Medium
+      Key Idea: The maximum number of moves needed to reach another any other
+        point is 3. In two moves you can reach any point with the same parity,
+        and one additional move can be used to reach all other points. The
+        answer is 0 if the start and goal are equal and 1 if they share a
+        diagonal or have Manhattan distance at most 3. If the start and end are
+        a Manhattan distance of 6 or less, or if a move along a diagonal brings
+        you to a goal diagonal or within 3 of the goal, the answer is 2.
+        Otherwise, the answer is 3.
+
     D: increment of coins
       Techniques: Dynamic Programming (Expected Value DP)
       Complexity: O(ABC)
@@ -817,6 +830,7 @@ Techniques:
       USACO 2020-Feb-S2: Triangles
       AtCoder Beginner Contest 130 C: Rectangle Cutting
       AtCoder Beginner Contest 130 F: Minimum Bounding Box
+      AtCoder Beginner Contest 184 C: Super Ryuma
     Piecewise Linear Functions:
       AtCoder Beginner Contest 130 F: Minimum Bounding Box
     Quotient Batching:
