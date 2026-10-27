@@ -386,6 +386,14 @@ CSES:
             squares the other knight could be placed on. Result: (oldSquares -
             2) * 5 + (oldSquares - 3) * 4 + (oldSquares - 4) * (i - 5) * 2.
 
+    8: Two Sets
+      Techniques: Constructive Algorithms, Greedy
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: The total sum S is n(n+1)/2. If it is odd, an equal partition
+        is impossible. Otherwise, each set should have sum S/2. Process values
+        from n to 1. Place i in the first set whenever it does not exceed the
+        remaining target. Otherwise place it into the second set.
 
 AtCoder:
   Beginner Contest 106:
@@ -840,6 +848,7 @@ Techniques:
   
   Constructive Algorithms:
     CSES Introductory Problems 5: Permutations
+    CSES Introductory Problems 8: Two Sets
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
@@ -853,6 +862,7 @@ Techniques:
     USACO 2020-Jan-S1: Berry Picking
     USACO 2020-Feb-B2: Breed Flip
     CSES Introductory Problems 4: Increasing Array
+    CSES Introductory Problems 8: Two Sets
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
