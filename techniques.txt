@@ -341,6 +341,17 @@ CSES:
         extend the run; otherwise reset its length to 1. Track the maximum run
         length seen.
 
+    4: Increasing Array
+      Techniques: Greedy
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Process the array from left to right. If the current value is
+        smaller than the previous adjusted value, it must be increased to that
+        value; increasing it any further would only add unnecessary cost. Add
+        (prev - cur) to the answer whenever cur < prev, then maintain: prev =
+        max(prev, cur). This produces the minimum total number of increments
+        needed to make the array nondecreasing.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -804,6 +815,7 @@ Techniques:
     USACO 2020-Jan-B1: Word Processor
     USACO 2020-Jan-S1: Berry Picking
     USACO 2020-Feb-B2: Breed Flip
+    CSES Introductory Problems 4: Increasing Array
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
