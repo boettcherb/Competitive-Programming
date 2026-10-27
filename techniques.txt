@@ -436,6 +436,15 @@ CSES:
         character symmetrically at the left and right ends, and place the
         single odd-frequency character in the middle if one exists.
 
+    CSES Introductory 13: Gray Code
+      Techniques: Constructive Algorithms, Greedy
+      Complexity: O(N * 2^N)
+      Difficulty: Easy
+      Key Idea: Start with an n-bit string of all 0's. For the next string,
+        greedily flip the first bit that does not produce a string we have
+        already seen. This will produce all 2^N strings. Alternatively, the
+        i-th Gray-code value can be found directly with: g(i) = i ^ (i >> 1).
+
 
 AtCoder:
   Beginner Contest 106:
@@ -893,6 +902,7 @@ Techniques:
     CSES Introductory Problems 5: Permutations
     CSES Introductory Problems 8: Two Sets
     CSES Introductory Problems 12: Palindrome Reorder
+    CSES Introductory Problems 13: Gray Code
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
@@ -907,6 +917,7 @@ Techniques:
     USACO 2020-Feb-B2: Breed Flip
     CSES Introductory Problems 4: Increasing Array
     CSES Introductory Problems 8: Two Sets
+    CSES Introductory Problems 13: Gray Code
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
