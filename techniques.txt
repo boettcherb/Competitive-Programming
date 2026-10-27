@@ -463,6 +463,16 @@ CSES:
         lexicographic order. next_permutation also handles repeated characters
         correctly, so each distinct permutation is generated exactly once.
 
+    CSES Introductory 16: Apple Division
+      Techniques: Brute Force (Subset Enumeration)
+      Complexity: O(2^N)
+      Difficulty: Easy
+      Key Idea: Each apple independently belongs to one of the two groups, so
+        enumerate every subset as the first group. If the chosen subset has
+        total weight S and all apples have total weight T, the other group has
+        weight T-S, so the difference is: |S - (T-S)| = |2S - T|. Take the
+        minimum over all subsets.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -916,6 +926,9 @@ Techniques:
     Permutation Enumeration:
       USACO 2019-Dec-B3: Livestock Lineup
       CSES Introductory Problems 15: Creating Strings
+    Subset Enumeration:
+      CSES Introductory Problems 16: Apple Division
+
   
   Constructive Algorithms:
     CSES Introductory Problems 5: Permutations
