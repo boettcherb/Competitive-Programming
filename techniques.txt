@@ -332,6 +332,15 @@ CSES:
         are exactly the integers from 1 through N with one missing, the single
         unmarked value is the answer.
 
+    3: Repetitions
+      Techniques: Strings (Run / Segment Counting)
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Scan the string while maintaining the length of the current run
+        of equal characters. If the current character matches the previous one,
+        extend the run; otherwise reset its length to 1. Track the maximum run
+        length seen.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -918,6 +927,10 @@ Techniques:
   Segment Tree:
     Range minimum:
       USACO 2020-Jan-G3: Springboards
+
+  Strings:
+    Run / Segment Counting:
+      CSES Introductory Problems 3: Repetitions
 
 
 
