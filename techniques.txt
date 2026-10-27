@@ -492,6 +492,14 @@ AtCoder:
       Difficulty: Trivial
       Key Idea: Simply print the determinant ad-bc.
 
+    B: Quizzes
+      Techniques: Simulation
+      Complexity: O(N)
+      Difficulty: Trivial
+      Key Idea: Process the quiz results from left to right. A correct answer
+        increases the score by 1. An incorrect answer decreases it by 1 only
+        when the current score is positive.
+
     D: increment of coins
       Techniques: Dynamic Programming (Expected Value DP)
       Complexity: O(ABC)
@@ -830,6 +838,7 @@ Techniques:
 
   Simulation:
     USACO 2018-Dec-B1: Mixing Milk
+    AtCoder Beginner Contest 184 B: Quizzes
     Cycle Detection:
       USACO 2020-Feb-B3: Swapity Swap
   
