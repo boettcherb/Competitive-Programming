@@ -454,6 +454,15 @@ CSES:
         then the N-1 disks from the spare peg to the destination. There is
         exactly 2^N - 1 moves and the recurrence is T(N) = 2T(N-1) + 1.
 
+    15: Creating Strings
+      Techniques: Brute Force (Permutation Enumeration)
+      Complexity: O(P * N), where P is the number of distinct permutations
+      Difficulty: Easy
+      Key Idea: Sort the string first, then repeatedly apply next_permutation.
+        Starting from sorted order ensures permutations are generated in
+        lexicographic order. next_permutation also handles repeated characters
+        correctly, so each distinct permutation is generated exactly once.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -906,6 +915,7 @@ Techniques:
       AtCoder Beginner Contest 130 F: Minimum Bounding Box
     Permutation Enumeration:
       USACO 2019-Dec-B3: Livestock Lineup
+      CSES Introductory Problems 15: Creating Strings
   
   Constructive Algorithms:
     CSES Introductory Problems 5: Permutations
