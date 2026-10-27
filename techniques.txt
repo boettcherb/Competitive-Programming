@@ -324,6 +324,14 @@ CSES:
         replace it with n/2. Otherwise replace it with 3n+1. Output every value
         until reaching 1. Use a 64-bit integer to avoid overflow.
 
+    2: Missing Number
+      Techniques: None
+      Complexity: O(N)
+      Difficulty: Trivial
+      Key Idea: Mark every number that appears in the input. Since the values
+        are exactly the integers from 1 through N with one missing, the single
+        unmarked value is the answer.
+
 
 AtCoder:
   Beginner Contest 106:
