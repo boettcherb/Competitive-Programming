@@ -352,6 +352,16 @@ CSES:
         max(prev, cur). This produces the minimum total number of increments
         needed to make the array nondecreasing.
 
+    5: Permutations
+      Techniques: Constructive Algorithms
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Adjacent numbers cannot differ by 1. Numbers of the same parity
+        differ by at least 2, so place all even numbers together and all odd
+        numbers together. For N >= 4, the boundary between the even and odd
+        groups can also be made valid by outputting the evens first and then
+        the odds. N = 2 and N = 3 are the only impossible cases.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -803,6 +813,9 @@ Techniques:
       AtCoder Beginner Contest 130 F: Minimum Bounding Box
     Permutation Enumeration:
       USACO 2019-Dec-B3: Livestock Lineup
+  
+  Constructive Algorithms:
+    CSES Introductory Problems 5: Permutations
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
