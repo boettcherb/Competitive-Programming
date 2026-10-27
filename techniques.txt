@@ -395,6 +395,13 @@ CSES:
         from n to 1. Place i in the first set whenever it does not exceed the
         remaining target. Otherwise place it into the second set.
 
+    CSES Introductory 9: Bit Strings
+      Techniques: Math, Observation
+      Complexity: O(N)
+      Difficulty: Trivial
+      Key Idea: Each of the N positions independently has two choices, so there
+        are 2^N bit strings. Compute this value modulo 1e9+7.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -832,6 +839,7 @@ Techniques:
   
   Observation:
     AtCoder Beginner Contest 106 C: Infinity
+    CSES Introductory Problems 9: Bit Strings
 
   Brute Force:
     Combination Enumeration:
@@ -959,6 +967,7 @@ Techniques:
 
   Math:
     CSES Introductory Problems 6: Number Spiral
+    CSES Introductory Problems 9: Bit Strings
     Algebra:
       AtCoder Beginner Contest 106 A: Garden
     Geometry:
