@@ -484,6 +484,19 @@ CSES:
         column. Since exactly one queen is placed per row, only columns and the
         two diagonal directions need to be checked against earlier rows.
 
+    18: Raab Game 1
+      Techniques: Constructive Algorithms
+      Complexity: O(N) per test case
+      Difficulty: Medium
+      Key Idea: If A+B > N, the requested numbers of wins cannot fit into the N
+        rounds. Also, if exactly one of A and B is zero, no valid pair of
+        permutations exists. Otherwise, let both players initially use the
+        permutation 1..N. Keep N-A-B positions identical so those rounds are
+        ties. For the remaining A+B positions, cyclically shift player 2's
+        cards by A positions. The wraparound portion creates exactly A wins for
+        player 1, while the remaining shifted positions create exactly B wins
+        for player 2.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -946,6 +959,7 @@ Techniques:
     CSES Introductory Problems 8: Two Sets
     CSES Introductory Problems 12: Palindrome Reorder
     CSES Introductory Problems 13: Gray Code
+    CSES Introductory Problems 18: Raab Game 1
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
