@@ -594,6 +594,17 @@ CSES:
         discard the applicant. Otherwise, the apartment is too small for this
         applicant and all later applicants, so discard the apartment.
 
+    3: Ferris Wheel
+      Techniques: Sorting, Two Pointers (Opposite Ends), Greedy
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: Sort the children's weights. Consider the heaviest remaining
+        child. If they can share a gondola with the lightest remaining child,
+        pair them; using anyone heavier instead cannot improve the solution. If
+        even the lightest child is too heavy to share with them, the heaviest
+        child must ride alone. Remove the heaviest child every iteration, and
+        remove the lightest as well whenever they can be paired.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
