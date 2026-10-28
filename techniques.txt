@@ -544,6 +544,18 @@ CSES:
         % digitLength, which identifies both the integer containing the
         requested position and the exact digit inside that integer.
 
+CSES Introductory 23: String Reorder
+  Techniques: Strings (Character Frequencies), Greedy, Constructive Algorithms
+  Complexity: O(26N)
+  Difficulty: Medium
+  Key Idea: First count each character. A valid arrangement exists only if no
+    character occurs more than ceil(N/2) times. Build the result from left to
+    right. Normally choose the lexicographically smallest remaining character
+    that differs from the previous character. However, if some character occurs
+    more than half of the remaining positions, that character must be placed
+    immediately; otherwise there will not be enough other characters left to
+    separate all of its remaining copies.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1007,6 +1019,7 @@ Techniques:
     CSES Introductory Problems 18: Raab Game 1
     CSES Introductory Problems 19: Mex Grid Construction
     CSES Introductory Problems 21: Grid Coloring 1
+    CSES Introductory Problems 23: String Reorder
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
@@ -1023,6 +1036,7 @@ Techniques:
     CSES Introductory Problems 8: Two Sets
     CSES Introductory Problems 13: Gray Code
     CSES Introductory Problems 21: Grid Coloring 1
+    CSES Introductory Problems 23: String Reorder
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
@@ -1164,6 +1178,7 @@ Techniques:
       CSES Introductory Problems 3: Repetitions
     Character Frequencies:
       CSES Introductory Problems 12: Palindrome Reorder
+      CSES Introductory Problems 23: String Reorder
 
 
 
