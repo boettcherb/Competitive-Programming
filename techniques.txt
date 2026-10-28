@@ -605,6 +605,18 @@ CSES:
         child must ride alone. Remove the heaviest child every iteration, and
         remove the lightest as well whenever they can be paired.
 
+    4: Concert Tickets
+      Techniques: Binary Search (Bounds)
+      Complexity: O((N + M) log N)
+      Difficulty: Easy
+      Key Idea: Store all unsold ticket prices in an ordered multiset. For a
+        customer willing to pay at most X, upper_bound(X) finds the first
+        ticket strictly more expensive than X. The previous element is
+        therefore the most expensive available ticket whose price is at most X.
+        If upper_bound(X) equals begin(), no affordable ticket exists.
+        Otherwise, sell the previous ticket and erase that single occurrence
+        from the multiset.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1109,6 +1121,7 @@ Techniques:
       USACO 2020-Jan-S3: Wormhole Sort
     Bounds:
       AtCoder Beginner Contest 184 F: Programming Contest
+      CSES Sorting and Searching 4: Concert Tickets
 
   Two Pointers:
     Sliding Window:
