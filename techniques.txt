@@ -497,6 +497,19 @@ CSES:
         player 1, while the remaining shifted positions create exactly B wins
         for player 2.
 
+    19: Mex Grid Construction
+      Techniques: Constructive Algorithms
+      Complexity: O(N^3)
+      Difficulty: Easy
+      Key Idea:  Process the grid from top-left to bottom-right. For each cell
+        (i,j), collect all values already appearing above it in column j and to
+        its left in row i, then assign the smallest nonnegative integer not
+        present. Since there are only O(N) relevant previous cells for each
+        position, the definition can be simulated directly in O(N^3), which is
+        sufficient for N <= 100. A stronger observation is that the resulting
+        value is simply i XOR j for zero-based indices, so the entire grid can
+        be generated directly in O(N^2).
+
 
 AtCoder:
   Beginner Contest 106:
@@ -952,7 +965,6 @@ Techniques:
       CSES Introductory Problems 15: Creating Strings
     Subset Enumeration:
       CSES Introductory Problems 16: Apple Division
-
   
   Constructive Algorithms:
     CSES Introductory Problems 5: Permutations
@@ -960,6 +972,7 @@ Techniques:
     CSES Introductory Problems 12: Palindrome Reorder
     CSES Introductory Problems 13: Gray Code
     CSES Introductory Problems 18: Raab Game 1
+    CSES Introductory Problems 19: Mex Grid Construction
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
