@@ -572,6 +572,16 @@ CSES:
         without explicit bounds checks. And make sure to use an array on the
         stack, not std::vector.
 
+  Sorting and Searching:
+    1: Distinct Numbers
+      Techniques: Sorting
+      Complexity: O(N log N)
+      Difficulty: Trivial
+      Key Idea: Sort the numbers so equal values become adjacent. The first
+        value is distinct, and every later value contributes one new distinct
+        number exactly when it differs from the previous value. Count these
+        changes while scanning the sorted array.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1042,6 +1052,7 @@ Techniques:
     USACO 2019-Dec-S2: Meetings
     USACO 2020-Jan-G3: Springboards
     USACO 2020-Feb-S2: Triangles
+    CSES Sorting and Searching 1: Distinct Numbers
     AtCoder Beginner Contest 154 C: Distinct or Not
 
   Greedy:
