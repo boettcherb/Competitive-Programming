@@ -520,6 +520,17 @@ CSES:
         gives its minimum number of knight moves from the source. Each square
         has at most 8 neighbors, so the total work is O(N^2).
 
+    21: Grid Coloring I
+      Techniques: Greedy, Constructive Algorithms
+      Complexity: O(NM)
+      Difficulty: Medium
+      Key Idea: Process cells from top-left to bottom-right.  When choosing a
+        new character for cell (i,j), it must differ from the cell's original
+        character, the already-colored cell above, and the already-colored cell
+        to the left. Thus at most three of the four characters A, B, C, D are
+        forbidden, so at least one valid choice always exists. Future right and
+        lower neighbors will account for the current cell when they are
+        processed, so no backtracking is necessary.
 
 AtCoder:
   Beginner Contest 106:
@@ -983,6 +994,7 @@ Techniques:
     CSES Introductory Problems 13: Gray Code
     CSES Introductory Problems 18: Raab Game 1
     CSES Introductory Problems 19: Mex Grid Construction
+    CSES Introductory Problems 21: Grid Coloring 1
 
   Sorting:
     USACO 2018-Dec-B2: The Bucket List
@@ -998,6 +1010,7 @@ Techniques:
     CSES Introductory Problems 4: Increasing Array
     CSES Introductory Problems 8: Two Sets
     CSES Introductory Problems 13: Gray Code
+    CSES Introductory Problems 21: Grid Coloring 1
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
