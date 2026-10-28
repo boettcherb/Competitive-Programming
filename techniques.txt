@@ -544,17 +544,33 @@ CSES:
         % digitLength, which identifies both the integer containing the
         requested position and the exact digit inside that integer.
 
-CSES Introductory 23: String Reorder
-  Techniques: Strings (Character Frequencies), Greedy, Constructive Algorithms
-  Complexity: O(26N)
-  Difficulty: Medium
-  Key Idea: First count each character. A valid arrangement exists only if no
-    character occurs more than ceil(N/2) times. Build the result from left to
-    right. Normally choose the lexicographically smallest remaining character
-    that differs from the previous character. However, if some character occurs
-    more than half of the remaining positions, that character must be placed
-    immediately; otherwise there will not be enough other characters left to
-    separate all of its remaining copies.
+    23: String Reorder
+      Techniques: Strings (Character Frequencies), Greedy,
+        Constructive Algorithms
+      Complexity: O(26N)
+      Difficulty: Medium
+      Key Idea: First count each character. A valid arrangement exists only if
+        no character occurs more than ceil(N/2) times. Build the result from
+        left to right. Normally choose the lexicographically smallest remaining
+        character that differs from the previous character. However, if some
+        character occurs more than half of the remaining positions, that
+        character must be placed immediately; otherwise there will not be
+        enough other characters left to separate all of its remaining copies.
+
+    24: Grid Path Description
+      Techniques: Recursion (Backtracking)
+      Complexity: Exponential worst case, heavily reduced by pruning
+      Difficulty: Hard
+      Key Idea: Build the path one move at a time while marking visited cells.
+        A fixed direction allows only that move, while '?' branches to all four
+        possible directions. Prune immediately when entering an already-visited
+        square or reaching the destination before all 48 moves have been used.
+        A crucial additional prune occurs when a path splits the remaining
+        unvisited grid into disconnected regions, making it impossible for one
+        path to visit every remaining cell. Also, Surround the 7x7 board with a
+        permanently visited border so moves outside the grid are rejected
+        without explicit bounds checks. And make sure to use an array on the
+        stack, not std::vector.
 
 AtCoder:
   Beginner Contest 106:
@@ -1073,6 +1089,7 @@ Techniques:
     CSES Introductory Problems 14: Tower of Hanoi
     Backtracking:
       CSES Introductory Problems 17: Chessboard and Queens
+      CSES Introductory Problems 24: Grid Path Description
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
