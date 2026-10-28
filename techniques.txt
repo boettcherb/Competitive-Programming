@@ -582,6 +582,18 @@ CSES:
         number exactly when it differs from the previous value. Count these
         changes while scanning the sorted array.
 
+    2: Apartments
+      Techniques: Sorting, Two Pointers (Parallel Scan), Greedy
+      Complexity: O(N log N + M log M)
+      Difficulty: Easy
+      Key Idea: Sort applicants by desired apartment size and apartments by
+        actual size. Maintain one pointer in each sorted list. If the current
+        applicant and apartment differ by at most K, match them and advance
+        both pointers. If the applicant's desired size is too small for the
+        current apartment, that applicant cannot match any later apartment, so
+        discard the applicant. Otherwise, the apartment is too small for this
+        applicant and all later applicants, so discard the apartment.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1053,6 +1065,7 @@ Techniques:
     USACO 2020-Jan-G3: Springboards
     USACO 2020-Feb-S2: Triangles
     CSES Sorting and Searching 1: Distinct Numbers
+    CSES Sorting and Searching 2: Apartments
     AtCoder Beginner Contest 154 C: Distinct or Not
 
   Greedy:
@@ -1064,6 +1077,7 @@ Techniques:
     CSES Introductory Problems 13: Gray Code
     CSES Introductory Problems 21: Grid Coloring 1
     CSES Introductory Problems 23: String Reorder
+    CSES Sorting and Searching 2: Apartments
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
@@ -1090,6 +1104,8 @@ Techniques:
       USACO 2019-Dec-S2: Meetings
       AtCoder Beginner Contest 130 D: Enough Array
       AtCoder Beginner Contest 154 D: Dice In Line
+    Parallel Scan:
+      CSES Sorting and Searching 2: Apartments
 
   Sweep Line:
     Event Processing:
