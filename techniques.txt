@@ -510,6 +510,16 @@ CSES:
         value is simply i XOR j for zero-based indices, so the entire grid can
         be generated directly in O(N^2).
 
+    20: Knight Moves Grid
+      Techniques: Graphs (BFS)
+      Complexity: O(N^2)
+      Difficulty: Easy
+      Key Idea: Treat each chessboard square as a graph vertex and each legal
+        knight move as an unweighted edge. Run BFS from the top-left square.
+        Because every move has equal cost, the first time a square is reached
+        gives its minimum number of knight moves from the source. Each square
+        has at most 8 neighbors, so the total work is O(N^2).
+
 
 AtCoder:
   Beginner Contest 106:
@@ -1054,6 +1064,7 @@ Techniques:
   Graphs:
     BFS:
       AtCoder Beginner Contest 184 E: Third Avenue
+      CSES Introductory Problems 20: Knight Moves Grid
     DFS:
       AtCoder Beginner Contest 280 F: Pay or Receive
     Dijkstra:
