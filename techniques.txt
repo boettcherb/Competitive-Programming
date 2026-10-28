@@ -617,6 +617,18 @@ CSES:
         Otherwise, sell the previous ticket and erase that single occurrence
         from the multiset.
 
+    5: Restaurant Customers
+      Techniques: Sorting, Sweep Line (Event Processing)
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: Convert every customer's interval into two events: arrival
+        (customer count increases by 1), and departure (customer count
+        decreases by 1). Sort all events by time and process them
+        chronologically while maintaining the current number of customers. The
+        maximum value reached is the maximum number of customers simultaneously
+        in the restaurant. All arrival and departure times are distinct, so no
+        tie-breaking rule is needed for equal event times.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1089,7 +1101,9 @@ Techniques:
     USACO 2020-Feb-S2: Triangles
     CSES Sorting and Searching 1: Distinct Numbers
     CSES Sorting and Searching 2: Apartments
+    CSES Sorting and Searching 5: Restaurant Customers
     AtCoder Beginner Contest 154 C: Distinct or Not
+    5: Restaurant Customers
 
   Greedy:
     USACO 2020-Jan-B1: Word Processor
@@ -1135,6 +1149,7 @@ Techniques:
     Event Processing:
       USACO 2018-Dec-B2: The Bucket List
       USACO 2020-Jan-G3: Springboards
+      CSES Sorting and Searching 5: Restaurant Customers
 
   Recursion:
     CSES Introductory Problems 14: Tower of Hanoi
