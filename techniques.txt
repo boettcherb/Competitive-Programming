@@ -532,6 +532,18 @@ CSES:
         lower neighbors will account for the current cell when they are
         processed, so no backtracking is necessary.
 
+    22: Digit Queries
+      Techniques: Math
+      Complexity: O(log K) per query
+      Difficulty: Medium
+      Key Idea: Group the infinite sequence by the number of digits in each
+        integer. There are 9 one-digit numbers, 90 two-digit numbers, 900 three
+        digit numbers, etc. Subtract the total digits contributed by each
+        complete block until K lies inside the current digit-length block.
+        Then: number = firstNumber + (K-1) / digitLength and digit  = (K-1)
+        % digitLength, which identifies both the integer containing the
+        requested position and the exact digit inside that integer.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1117,6 +1129,7 @@ Techniques:
     Algebra:
       AtCoder Beginner Contest 106 A: Garden
       CSES Introductory Problems 11: Coin Piles
+      CSES Introductory Problems 22: Digit Queries
     Geometry:
       USACO 2020-Feb-S2: Triangles
       AtCoder Beginner Contest 130 C: Rectangle Cutting
