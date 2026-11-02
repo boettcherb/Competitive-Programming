@@ -953,6 +953,21 @@ AtCoder:
         conditions (A_i, B_i) have at least one ball on both dishes, and
         maximize that count.
 
+    D: Staircase Sequences
+      Techniques: Math (Arithmetic Progressions)
+      Complexity: O(sqrt(N) log N)
+      Difficulty: Medium
+      Key Idea: For each sequence that sums to N, there is always a second
+        sequence that includes all previous numbers and the negative of all
+        previous numbers. Therefore, we can ignore the negative values and
+        multiply our answer by 2. For a fixed sequence length L and starting
+        integer A, the sum is L(2A + L - 1) / 2 (sum of consecutive numbers
+        formula). For each possible length L, we can find the starting value A
+        by computing it directly: L(2A + L - 1) / 2 = N; 2A + L - 1 = 2N / L;
+        A = (2N/L - L + 1) / 2. A exists if both divisions result in integers.
+        Do this for all values of L. Once L becomes sqrt(N), the sum of all
+        values from 1 to L is > N, so we can stop. Time Complexity: O(sqrt(N)).
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -1322,6 +1337,8 @@ Techniques:
       CSES Introductory Problems 11: Coin Piles
       CSES Introductory Problems 22: Digit Queries
       CSES Sorting and Searching 9: Stick Lengths
+    Arithmetic Progressions:
+      AtCoder Beginner Contest 190 D: Staircase sequences
     Geometry:
       USACO 2020-Feb-S2: Triangles
       AtCoder Beginner Contest 130 C: Rectangle Cutting
