@@ -694,6 +694,21 @@ CSES:
         pair satisfying position[x] > position[x+1] forces the start of a new
         round.
 
+    12: Collecting Numbers II
+      Techniques: Preprocessing (Inverse Mapping),
+      Complexity: O(N + M log 1) = O(N + M)
+      Difficulty: Medium
+      Key Idea: Store position[x], the current position of every value x.
+        The number of rounds is: 1 + count of x such that position[x] >
+        position[x+1]. When two values u and v are swapped, almost all of these
+        comparisons remain unchanged. Only comparisons involving u or v can
+        change: (u-1, u), (u, u+1), (v-1, v), (v, v+1). Before the swap,
+        subtract the contributions of these affected pairs. Swap both the
+        permutation values and their inverse positions, then add the
+        new contributions back. Thus each query updates only a constant number
+        of relationships.
+
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1190,6 +1205,7 @@ Techniques:
   Preprocessing:
     Inverse Mapping:
       USACO 2019-Dec-B1: Cow Gymnastics
+      CSES Sorting and Searching 12: Collecting Numbers 2
     Frequency Counting:
       USACO 2020-Jan-G2: Farmer John Solves 3SUM
 
