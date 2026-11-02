@@ -731,6 +731,18 @@ CSES:
         tower must be created. The number of maintained tops at the end is the
         minimum possible number of towers.
 
+    CSES Sorting and Searching 15: Traffic Lights
+      Techniques: Binary Search (Bounds)
+      Complexity: O(N log N)
+      Difficulty: Medium
+      Key Idea: Maintain all traffic-light positions in an ordered set and all
+        current road-segment lengths in a multiset. When inserting a light at
+        position x, use the ordered set to find the nearest existing lights
+        immediately to its left and right, l and r. The old segment of length
+        r-l disappears and is replaced by two segments: x-l and r-x. Remove one
+        occurrence of r-l from the multiset, insert the two new lengths, and
+        report the largest segment using the multiset's maximum.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -1319,6 +1331,7 @@ Techniques:
     Bounds:
       CSES Sorting and Searching 4: Concert Tickets
       CSES Sorting and Searching 14: Towers
+      CSES Sorting and Searching 15: Traffic Lights
       AtCoder Beginner Contest 184 F: Programming Contest
 
   Two Pointers:
