@@ -708,6 +708,17 @@ CSES:
         new contributions back. Thus each query updates only a constant number
         of relationships.
 
+    13: Playlist
+      Techniques: Two Pointers (Sliding Window)
+      Complexity: O(N log N)
+      Difficulty: Medium
+      Key Idea: Maintain a window containing only distinct song IDs. Extend the
+        right endpoint while the next value is not already present. If a
+        duplicate is encountered, move the left endpoint forward until the
+        previous occurrence of that value leaves the window. Since the left and
+        right pointers only move forward, there are O(N) pointer movements. The
+        ordered set makes membership and deletion O(log N).
+
 
 AtCoder:
   Beginner Contest 106:
@@ -1299,6 +1310,7 @@ Techniques:
   Two Pointers:
     Sliding Window:
       USACO 2019-Dec-S2: Meetings
+      CSES Sorting and Searching 13: Playlist
       AtCoder Beginner Contest 130 D: Enough Array
       AtCoder Beginner Contest 154 D: Dice In Line
     Parallel Scan:
