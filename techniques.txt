@@ -685,6 +685,15 @@ CSES:
         remaining coin is too large. Therefore repeatedly extend S while x <=
         S+1. The first gap S+1 is the smallest missing coin sum.
 
+    11: Collecting Numbers
+      Techniques: Observation
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: The numbers x and x+1 can be collected in the same round
+        exactly when x appears before x+1 in the permutation. Therefore, every
+        pair satisfying position[x] > position[x+1] forces the start of a new
+        round.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1193,6 +1202,7 @@ Techniques:
   Observation:
     AtCoder Beginner Contest 106 C: Infinity
     CSES Introductory Problems 9: Bit Strings
+    CSES Sorting and Searching 11: Collecting Numbers
 
   Brute Force:
     Combination Enumeration:
