@@ -935,13 +935,23 @@ AtCoder:
       Key Idea: Takahashi wins when A > B if C = 0, and when A >= B if C = 1.
         Equivalently, Takahashi wins exactly when A + C > B.
 
-    AtCoder ABC 190 B: Magic 3
+    B: Magic 3
       Techniques: None
       Complexity: O(N)
       Difficulty: Trivial
       Key Idea: A spell can damage the monster exactly when its cast time is
         less than S and its power is greater than D. Scan all spells and stop
         as soon as one satisfies both conditions.
+
+    C: Bowls and Dishes
+      Techniques: Brute Force (Subset Enumeration), Recursion (Backtracking)
+      Complexity: O(2^K * M)
+      Difficulty: Easy
+      Key Idea: Each person independently chooses one of two dishes, so
+        enumerate all 2^K assignments. Maintain how many balls are currently on
+        each dish while recursing. After all K choices are made, count how many
+        conditions (A_i, B_i) have at least one ball on both dishes, and
+        maximize that count.
 
   Beginner Contest 280:
     A: Pawn on a Grid
@@ -1155,6 +1165,7 @@ Techniques:
       CSES Introductory Problems 15: Creating Strings
     Subset Enumeration:
       CSES Introductory Problems 16: Apple Division
+      AtCoder Beginner Contest 190 C: Bowls and Dishes
   
   Constructive Algorithms:
     CSES Introductory Problems 5: Permutations
@@ -1236,6 +1247,7 @@ Techniques:
     Backtracking:
       CSES Introductory Problems 17: Chessboard and Queens
       CSES Introductory Problems 24: Grid Path Description
+      AtCoder Beginner Contest 190 C: Bowls and Dishes
 
   Dynamic Programming:
     USACO 2019-Dec-G3: Moortal Cowmbat
