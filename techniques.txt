@@ -673,6 +673,18 @@ CSES:
         target away from the median causes more values to increase their
         contribution than decrease it, so the median minimizes the answer.
 
+    10: Missing Coin Sum
+      Techniques: Sorting, Greedy
+      Complexity: O(N log N)
+      Difficulty: Medium
+      Key Idea: Sort the coin values and maintain the invariant that every sum
+        from 1 through S can currently be formed. For the next coin x, if x <=
+        S+1, then combining x with all sums from 0 through S extends the
+        reachable range continuously through S+x, and if x > S+1, then S+1
+        cannot be formed, because previous coins reach only S and every
+        remaining coin is too large. Therefore repeatedly extend S while x <=
+        S+1. The first gap S+1 is the smallest missing coin sum.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1149,6 +1161,7 @@ Techniques:
     CSES Sorting and Searching 6: Movie Festival
     CSES Sorting and Searching 7: Sum of Two Values
     CSES Sorting and Searching 9: Stick Lengths
+    CSES Sorting and Searching 10: Missing Coin Sum
     AtCoder Beginner Contest 154 C: Distinct or Not
 
   Greedy:
@@ -1161,6 +1174,7 @@ Techniques:
     CSES Introductory Problems 21: Grid Coloring 1
     CSES Introductory Problems 23: String Reorder
     CSES Sorting and Searching 2: Apartments
+    CSES Sorting and Searching 10: Missing Coin Sum
     Interval Scheduling:
       CSES Sorting and Searching 6: Movie Festival
 
