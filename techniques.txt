@@ -639,6 +639,18 @@ CSES:
         never reduce the number of movies that fit afterward, so this greedy
         strategy maximizes the total number watched.
 
+    7: Sum of Two Values
+      Techniques: Sorting, Two Pointers (Opposite Ends)
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: Sort the values while keeping their original indices. Maintain
+        pointers at the smallest and largest remaining values. If their sum
+        equals X, the answer is found. If the sum is too small, move the left
+        pointer right to increase it. If the sum is too large, move the right
+        pointer left to decrease it. Because the array is sorted, each
+        discarded possibility can never become part of a valid pair with the
+        current opposite endpoint.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1113,6 +1125,7 @@ Techniques:
     CSES Sorting and Searching 2: Apartments
     CSES Sorting and Searching 5: Restaurant Customers
     CSES Sorting and Searching 6: Movie Festival
+    CSES Sorting and Searching 7: Sum of Two Values
     AtCoder Beginner Contest 154 C: Distinct or Not
 
   Greedy:
@@ -1156,6 +1169,8 @@ Techniques:
       AtCoder Beginner Contest 154 D: Dice In Line
     Parallel Scan:
       CSES Sorting and Searching 2: Apartments
+    Opposite Ends:
+      CSES Sorting and Searching 7: Sum of Two Values
 
   Sweep Line:
     Event Processing:
