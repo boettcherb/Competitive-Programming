@@ -719,6 +719,18 @@ CSES:
         right pointers only move forward, there are O(N) pointer movements. The
         ordered set makes membership and deletion O(log N).
 
+    14: Towers
+      Techniques: Greedy, Binary Search (Bounds)
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: Maintain the current top cube of every tower. For each new cube
+        x, place it on the tower whose top is the smallest value strictly
+        greater than x. This is found with upper_bound(x). Choosing the
+        smallest valid top is optimal because it leaves larger tower tops
+        available for future cubes. If no tower top is greater than x, a new
+        tower must be created. The number of maintained tops at the end is the
+        minimum possible number of towers.
+
 
 AtCoder:
   Beginner Contest 106:
@@ -1283,6 +1295,7 @@ Techniques:
     CSES Introductory Problems 23: String Reorder
     CSES Sorting and Searching 2: Apartments
     CSES Sorting and Searching 10: Missing Coin Sum
+    CSES Sorting and Searching 14: Towers
     Interval Scheduling:
       CSES Sorting and Searching 6: Movie Festival
 
@@ -1304,8 +1317,9 @@ Techniques:
       USACO 2020-Jan-S2: Loan Repayment
       USACO 2020-Jan-S3: Wormhole Sort
     Bounds:
-      AtCoder Beginner Contest 184 F: Programming Contest
       CSES Sorting and Searching 4: Concert Tickets
+      CSES Sorting and Searching 14: Towers
+      AtCoder Beginner Contest 184 F: Programming Contest
 
   Two Pointers:
     Sliding Window:
