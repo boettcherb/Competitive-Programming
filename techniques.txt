@@ -663,6 +663,16 @@ CSES:
         Initialize the answer to a negative value so arrays containing only
         negative numbers are handled correctly.
 
+    9: Stick Lengths
+      Techniques: Sorting, Math
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: To minimize the total adjustment cost sum |A[i] - x|, choose x
+        to be a median of the values. After sorting, use A[N/2] as the target
+        length and sum the absolute differences from that median. Moving the
+        target away from the median causes more values to increase their
+        contribution than decrease it, so the median minimizes the answer.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1138,6 +1148,7 @@ Techniques:
     CSES Sorting and Searching 5: Restaurant Customers
     CSES Sorting and Searching 6: Movie Festival
     CSES Sorting and Searching 7: Sum of Two Values
+    CSES Sorting and Searching 9: Stick Lengths
     AtCoder Beginner Contest 154 C: Distinct or Not
 
   Greedy:
@@ -1268,6 +1279,7 @@ Techniques:
       AtCoder Beginner Contest 106 A: Garden
       CSES Introductory Problems 11: Coin Piles
       CSES Introductory Problems 22: Digit Queries
+      CSES Sorting and Searching 9: Stick Lengths
     Geometry:
       USACO 2020-Feb-S2: Triangles
       AtCoder Beginner Contest 130 C: Rectangle Cutting
