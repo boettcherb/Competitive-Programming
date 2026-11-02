@@ -935,6 +935,14 @@ AtCoder:
       Key Idea: Takahashi wins when A > B if C = 0, and when A >= B if C = 1.
         Equivalently, Takahashi wins exactly when A + C > B.
 
+    AtCoder ABC 190 B: Magic 3
+      Techniques: None
+      Complexity: O(N)
+      Difficulty: Trivial
+      Key Idea: A spell can damage the monster exactly when its cast time is
+        less than S and its power is greater than D. Scan all spells and stop
+        as soon as one satisfies both conditions.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
