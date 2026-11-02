@@ -968,6 +968,21 @@ AtCoder:
         Do this for all values of L. Once L becomes sqrt(N), the sum of all
         values from 1 to L is > N, so we can stop. Time Complexity: O(sqrt(N)).
 
+    E: Magical Ornament
+      Techniques: Graphs (BFS), Dynamic Programming (Bitmask DP)
+      Complexity: O(K(N+M) + 2^K K^2)
+      Difficulty: Hard
+      Key Idea: Only the K special vertices matter in the final visiting order,
+        but the shortest path between two special vertices may pass through
+        ordinary graph vertices. Run BFS from each special vertex to compute
+        the shortest distance between every pair of special vertices. Then
+        solve a traveling-salesman-style DP on the compressed K-vertex graph:
+        dp[mask][last] = minimum distance to visit every special vertex in mask
+        and finish at special vertex last. Try starting from each special
+        vertex. If some required transition is unreachable, the corresponding
+        route is invalid. Add 1 to the final edge count because the problem
+        asks for the number of vertices visited.
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -1286,6 +1301,8 @@ Techniques:
       AtCoder Educational DP Contest J: Sushi
     Digit DP:
       AtCoder Beginner Contest 154 E: Almost Everywhere Zero
+    Bitmask DP:
+      AtCoder Beginner Contest 190 E: Magical Ornament
     Kadane's Algorithm:
       CSES Sorting and Searching 8: Maximum Subarray Sum
 
@@ -1294,8 +1311,9 @@ Techniques:
 
   Graphs:
     BFS:
-      AtCoder Beginner Contest 184 E: Third Avenue
       CSES Introductory Problems 20: Knight Moves Grid
+      AtCoder Beginner Contest 184 E: Third Avenue
+      AtCoder Beginner Contest 190 E: Magical Ornament
     DFS:
       AtCoder Beginner Contest 280 F: Pay or Receive
     Dijkstra:
