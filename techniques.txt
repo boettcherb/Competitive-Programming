@@ -983,6 +983,20 @@ AtCoder:
         route is invalid. Add 1 to the final edge count because the problem
         asks for the number of vertices visited.
 
+    F: Shift and Inversions
+      Techniques: Math, Fenwick Tree
+      Complexity: O(N log N)
+      Difficulty: Hard
+      Key Idea: First compute the inversion count of the original permutation
+        using a Fenwick tree. While scanning left to right, query how many
+        previously seen values are greater than the current value. For each
+        cyclic shift, only one element changes position: the first value A[i]
+        moves to the end. Since A is a permutation of 1..N: as the first
+        element, A[i] forms A[i]-1 inversions with smaller values, and as the
+        last element, it forms N-A[i] inversions with larger values. Therefore,
+        the inversion count changes by N - A[i] - A[i] + 1. After the initial
+        O(N log N) inversion count, every cyclic-shift answer is O(1).
+
   Beginner Contest 280:
     A: Pawn on a Grid
       Techniques: None
@@ -1350,6 +1364,7 @@ Techniques:
   Math:
     CSES Introductory Problems 6: Number Spiral
     CSES Introductory Problems 9: Bit Strings
+    AtCoder Beginner Contest 190 F: Shift and Inversions
     Algebra:
       AtCoder Beginner Contest 106 A: Garden
       CSES Introductory Problems 11: Coin Piles
@@ -1385,6 +1400,9 @@ Techniques:
   Segment Tree:
     Range minimum:
       USACO 2020-Jan-G3: Springboards
+  
+  Fenwick Tree:
+    AtCoder Beginner Contest 190 F: Shift and Inversions
 
   Strings:
     Run / Segment Counting:
