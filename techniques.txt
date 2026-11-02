@@ -629,6 +629,16 @@ CSES:
         in the restaurant. All arrival and departure times are distinct, so no
         tie-breaking rule is needed for equal event times.
 
+    6: Movie Festival
+      Techniques: Greedy (Interval Scheduling), Sorting
+      Complexity: O(N log N)
+      Difficulty: Easy
+      Key Idea: Sort movies by ending time. Repeatedly choose the earliest-
+        finishing movie whose start time is at least the end time of the
+        previously selected movie. Choosing the movie that ends earliest can
+        never reduce the number of movies that fit afterward, so this greedy
+        strategy maximizes the total number watched.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1102,8 +1112,8 @@ Techniques:
     CSES Sorting and Searching 1: Distinct Numbers
     CSES Sorting and Searching 2: Apartments
     CSES Sorting and Searching 5: Restaurant Customers
+    CSES Sorting and Searching 6: Movie Festival
     AtCoder Beginner Contest 154 C: Distinct or Not
-    5: Restaurant Customers
 
   Greedy:
     USACO 2020-Jan-B1: Word Processor
@@ -1115,6 +1125,8 @@ Techniques:
     CSES Introductory Problems 21: Grid Coloring 1
     CSES Introductory Problems 23: String Reorder
     CSES Sorting and Searching 2: Apartments
+    Interval Scheduling:
+      CSES Sorting and Searching 6: Movie Festival
 
   Prefix Sums:
     USACO 2019-Dec-G3: Moortal Cowmbat
