@@ -651,6 +651,18 @@ CSES:
         discarded possibility can never become part of a valid pair with the
         current opposite endpoint.
 
+    8: Maximum Subarray Sum
+      Techniques: Dynamic Programming (Kadane's Algorithm)
+      Complexity: O(N)
+      Difficulty: Easy
+      Key Idea: Let the running value represent the maximum subarray sum ending
+        at the current position. Extend the previous subarray by the current
+        value. If the running sum becomes negative, discard it before
+        processing future elements because a negative prefix can only hurt any
+        later subarray. Track the maximum value reached at any point.
+        Initialize the answer to a negative value so arrays containing only
+        negative numbers are handled correctly.
+
 AtCoder:
   Beginner Contest 106:
     A: Garden
@@ -1206,6 +1218,8 @@ Techniques:
       AtCoder Educational DP Contest J: Sushi
     Digit DP:
       AtCoder Beginner Contest 154 E: Almost Everywhere Zero
+    Kadane's Algorithm:
+      CSES Sorting and Searching 8: Maximum Subarray Sum
 
   Meet-in-the-Middle:
     AtCoder Beginner Contest 184 F: Programming Contest
